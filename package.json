@@ -6,6 +6,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "postinstall": "husky install",
     "prebuild": "yarn install && yarn lint",
     "prebuild:dev": "yarn install && yarn lint",
     "lint": "eslint --ext .ts .",
