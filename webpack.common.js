@@ -29,6 +29,7 @@ module.exports = {
     alias: {
       images: path.resolve(__dirname, 'src/static/images'),
       styles: path.resolve(__dirname, 'src/static/styles'),
+      presenters: path.resolve(__dirname, 'src/main/presenters'),
     },
   },
   optimization: {
@@ -45,7 +46,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Monopoly',
       filename: 'index.html',
-      template: path.resolve(__dirname, './src/static/views/index.html'),
+      template: path.resolve(__dirname, './src/static/index.html'),
       favicon: path.resolve(__dirname, './src/static/images/favicon.png'),
     }),
   ],

@@ -12,8 +12,8 @@
       "styles/*": [
         "src/resources/styles/*"
       ],
-      "views/*": [
-        "src/resources/views/*"
+      "presenters/*": [
+        "src/main/presenters/*"
       ]
     },
     "target": "ES6",
