@@ -1,9 +1,10 @@
 import Presenter from 'presenters/Presenter';
+import MainPageComponent from 'view-components/MainPageComponent';
 
 export default class MainPagePresenter implements Presenter {
-  private message = 'Main Page';
+  private component = new MainPageComponent();
 
   async initAndRenderView(): Promise<void> {
-    console.log(this.message);
+    this.component.render();
   }
 }

@@ -7,14 +7,23 @@
     "baseUrl": ".",
     "paths": {
       "images/*": [
-        "src/resources/images/*"
+        "src/static/images/*"
       ],
       "styles/*": [
-        "src/resources/styles/*"
+        "src/static/styles/*"
+      ],
+      "templates/*": [
+        "src/static/templates/*"
+      ],
+      "model/*": [
+        "src/main/model/*"
+      ],
+      "view-components/*": [
+        "src/main/view-components/*"
       ],
       "presenters/*": [
         "src/main/presenters/*"
-      ]
+      ],
     },
     "target": "ES6",
     "module": "ES6",

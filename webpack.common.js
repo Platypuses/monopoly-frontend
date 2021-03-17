@@ -17,10 +17,17 @@ module.exports = {
       {
         test: /\.(?:gif|png|jpg|jpeg)$/i,
         type: 'asset/resource',
+        exclude: /node_modules/,
       },
       {
-        test: /\.(scss|css)$/i,
+        test: /\.scss$/i,
         use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.hbs$/i,
+        use: 'handlebars-loader',
+        exclude: /node_modules/,
       },
     ],
   },
@@ -29,6 +36,9 @@ module.exports = {
     alias: {
       images: path.resolve(__dirname, 'src/static/images'),
       styles: path.resolve(__dirname, 'src/static/styles'),
+      templates: path.resolve(__dirname, 'src/static/templates'),
+      model: path.resolve(__dirname, 'src/main/model'),
+      'view-components': path.resolve(__dirname, 'src/main/view-components'),
       presenters: path.resolve(__dirname, 'src/main/presenters'),
     },
   },
