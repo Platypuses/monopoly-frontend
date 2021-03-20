@@ -1,0 +1,23 @@
+.play-button {
+  $font-size: 2.5em;
+  $background-color: #efede0;
+  $border-width: .1em;
+  $border-color: #cbb97a;
+  $border-radius: 1em;
+  $button-padding: 0 1.8em;
+
+  background-color: $background-color;
+  border: $border-width solid $border-color;
+  border-radius: $border-radius;
+  font-size: $font-size;
+  padding: $button-padding;
+}
+
+.play-button:hover {
+  $background-color: #e9e5ce;
+  $border-width: 5px;
+
+  background-color: $background-color;
+  border-width: $border-width;
+  cursor: pointer;
+}

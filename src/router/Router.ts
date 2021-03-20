@@ -1,24 +1,20 @@
-import Presenter from 'presenters/Presenter';
 import MainPagePresenter from 'presenters/MainPagePresenter';
+import Presenter from 'presenters/Presenter';
 import TestPagePresenter from 'presenters/TestPagePresenter';
+import RoutesEnum from 'router/RoutesEnum';
 
-enum Routes {
-  MAIN = 'main',
-  TEST = 'test',
-}
+const pagesDictionary = new Map<string, Presenter>();
+pagesDictionary.set(RoutesEnum.MAIN, new MainPagePresenter());
+pagesDictionary.set(RoutesEnum.TEST, new TestPagePresenter());
 
-const pages = new Map<string, Presenter>();
-pages.set(Routes.MAIN, new MainPagePresenter());
-pages.set(Routes.TEST, new TestPagePresenter());
-
-const DEFAULT_ROUTE = Routes.MAIN;
+const DEFAULT_ROUTE = RoutesEnum.MAIN;
 
 async function handlePageHashChange(): Promise<void> {
-  const pageRoute = window.location.hash.substr(1);
-  const pagePresenter = pages.get(pageRoute);
+  const pageRoute = window.location.hash;
+  const pagePresenter = pagesDictionary.get(pageRoute);
 
   if (pagePresenter === undefined) {
-    window.location.hash = `#${DEFAULT_ROUTE}`;
+    window.location.hash = DEFAULT_ROUTE;
     return;
   }
 

@@ -1,0 +1,21 @@
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('../assets/fonts/PlayfairDisplay.ttf');
+}
+
+@font-face {
+  font-family: Algerian;
+  src: url('../assets/fonts/Algerian.ttf');
+}
+
+body,
+input {
+  font-family: 'Playfair Display', sans-serif;
+}
+
+html,
+body,
+.root {
+  height: 100%;
+  margin: 0;
+}

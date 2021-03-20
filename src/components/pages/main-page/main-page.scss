@@ -1,0 +1,27 @@
+.main-page-content {
+  align-items: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.monopoly-text {
+  $font-size: 10em;
+  $margin-top: 1em;
+  $margin-bottom: .375em;
+  $shadow-blur: .05em;
+  $shadow-color: #cbb97a;
+
+  font-family: Algerian, sans-serif;
+  font-size: $font-size;
+  font-style: normal;
+  font-weight: normal;
+  margin-bottom: $margin-bottom;
+  margin-top: $margin-top;
+  text-shadow: 0 0 $shadow-blur $shadow-color;
+}

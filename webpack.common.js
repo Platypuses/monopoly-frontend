@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: path.resolve(__dirname, './src/main/index.ts'),
+  entry: path.resolve(__dirname, 'src/index.ts'),
   module: {
     rules: [
       {
@@ -15,13 +15,22 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.(?:gif|png|jpg|jpeg)$/i,
+        test: /\.(?:gif|png|jpg|jpeg|ttf)$/i,
         type: 'asset/resource',
         exclude: /node_modules/,
       },
       {
         test: /\.scss$/i,
-        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+        use: [
+          'style-loader',
+          'css-loader',
+          'postcss-loader',
+          'resolve-url-loader',
+          {
+            loader: 'sass-loader',
+            options: { sourceMap: true },
+          },
+        ],
         exclude: /node_modules/,
       },
       {
@@ -34,12 +43,11 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.ts'],
     alias: {
-      images: path.resolve(__dirname, 'src/static/images'),
-      styles: path.resolve(__dirname, 'src/static/styles'),
-      templates: path.resolve(__dirname, 'src/static/templates'),
-      model: path.resolve(__dirname, 'src/main/model'),
-      'view-components': path.resolve(__dirname, 'src/main/view-components'),
-      presenters: path.resolve(__dirname, 'src/main/presenters'),
+      router: path.resolve(__dirname, 'src/router'),
+      assets: path.resolve(__dirname, 'src/assets'),
+      components: path.resolve(__dirname, 'src/components'),
+      model: path.resolve(__dirname, 'src/model'),
+      presenters: path.resolve(__dirname, 'src/presenters'),
     },
   },
   optimization: {
@@ -56,8 +64,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Monopoly',
       filename: 'index.html',
-      template: path.resolve(__dirname, './src/static/index.html'),
-      favicon: path.resolve(__dirname, './src/static/images/favicon.png'),
+      template: path.resolve(__dirname, 'src/index.html'),
+      favicon: path.resolve(__dirname, 'src/assets/images/favicon.png'),
     }),
   ],
 };

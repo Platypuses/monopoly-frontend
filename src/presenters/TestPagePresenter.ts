@@ -1,9 +1,9 @@
-import Presenter from 'presenters/Presenter';
-import TestPageComponent from 'view-components/TestPageComponent';
+import TestPageComponent from 'components/pages/test-page/TestPageComponent';
 import UserDto from 'model/dto/UserDto';
+import Presenter from 'presenters/Presenter';
 
 export default class TestPagePresenter implements Presenter {
-  private component = new TestPageComponent();
+  private pageComponent = new TestPageComponent();
 
   private users: Array<UserDto> = [
     {
@@ -21,6 +21,6 @@ export default class TestPagePresenter implements Presenter {
   ];
 
   async initAndRenderView(): Promise<void> {
-    this.component.render(this.users);
+    this.pageComponent.render(this.users);
   }
 }

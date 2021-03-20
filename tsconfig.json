@@ -6,23 +6,20 @@
     "outDir": "dist",
     "baseUrl": ".",
     "paths": {
-      "images/*": [
-        "src/static/images/*"
+      "router/*": [
+        "src/router/*"
       ],
-      "styles/*": [
-        "src/static/styles/*"
+      "assets/*": [
+        "src/assets/*"
       ],
-      "templates/*": [
-        "src/static/templates/*"
+      "components/*": [
+        "src/components/*"
       ],
       "model/*": [
-        "src/main/model/*"
-      ],
-      "view-components/*": [
-        "src/main/view-components/*"
+        "src/model/*"
       ],
       "presenters/*": [
-        "src/main/presenters/*"
+        "src/presenters/*"
       ],
     },
     "target": "ES6",
