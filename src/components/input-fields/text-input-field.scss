@@ -1,0 +1,14 @@
+.text-input-field {
+  $border-width: .05em;
+  $border-color: #5f2f4e;
+  $border-radius: .75em;
+  $font-size: 1.25em;
+  $input-height: 1.7em;
+  $field-padding: 0 .5em;
+
+  border: $border-width solid $border-color;
+  border-radius: $border-radius;
+  font-size: $font-size;
+  height: $input-height;
+  padding: $field-padding;
+}

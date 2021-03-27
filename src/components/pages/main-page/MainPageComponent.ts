@@ -10,14 +10,13 @@ export default class MainPageComponent extends BasePageComponent {
   private playButtonElement: HTMLElement | null = null;
 
   render(): void {
-    this.renderPageTemplate();
+    this.renderPageContent();
     MainPageComponent.setBackgroundImage();
     this.setPlayButtonElement();
   }
 
-  private renderPageTemplate() {
-    const playButtonComponent = PlayButtonComponent.render();
-    this.getRootElement().innerHTML = mainPageTemplate({ playButtonComponent });
+  private renderPageContent() {
+    this.getRootElement().innerHTML = mainPageTemplate();
   }
 
   private static setBackgroundImage() {

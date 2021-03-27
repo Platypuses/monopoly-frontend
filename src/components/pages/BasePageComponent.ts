@@ -7,5 +7,11 @@ export default abstract class BasePageComponent {
     );
   }
 
+  protected static htmlStringToElement(html: string): HTMLElement {
+    const template = document.createElement('template');
+    template.innerHTML = html.trim();
+    return <HTMLElement>template.content.firstChild;
+  }
+
   abstract render(context?: unknown): void;
 }

@@ -4,20 +4,20 @@
   $border-width: .1em;
   $border-color: #cbb97a;
   $border-radius: 1em;
-  $button-padding: 0 1.8em;
+  $button-height: 1.25em;
+  $button-width: 5.6em;
 
   background-color: $background-color;
   border: $border-width solid $border-color;
   border-radius: $border-radius;
   font-size: $font-size;
-  padding: $button-padding;
+  height: $button-height;
+  text-align: center;
+  width: $button-width;
 }
 
 .play-button:hover {
-  $background-color: #e9e5ce;
-  $border-width: 5px;
-
-  background-color: $background-color;
-  border-width: $border-width;
+  $hovered-background-color: #e9e5ce;
+  background-color: $hovered-background-color;
   cursor: pointer;
 }

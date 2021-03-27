@@ -1,0 +1,40 @@
+.modal-window {
+  $background-color: rgba(0, 0, 0, .7);
+
+  background-color: $background-color;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  transition: all 300ms linear 0s;
+  visibility: hidden;
+  width: 100%;
+
+  &.opened-modal-window {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.modal-window-body {
+  $window-padding: 1em;
+
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: 100%;
+  padding: $window-padding;
+}
+
+.modal-window-content {
+  $background-color: #efede0;
+  $content-color: #000;
+  $max-content-width: 60em;
+  $content-padding: 2em;
+
+  background-color: $background-color;
+  color: $content-color;
+  max-width: $max-content-width;
+  padding: $content-padding;
+}

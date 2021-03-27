@@ -1,0 +1,64 @@
+.modal-window-content {
+  border-radius: 4em;
+}
+
+.registration-page-content {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.create-account-text {
+  font-size: 2em;
+  margin-top: 1.5em;
+}
+
+.text-input-field {
+  width: 13.5em;
+}
+
+.nickname-field {
+  margin-top: 1.5em;
+}
+
+.password-field {
+  margin-top: .7em;
+}
+
+.password-confirmation-field {
+  margin-top: .5em;
+}
+
+.text-length-hint {
+  $font-color: rgba(0, 0, 0, .3);
+  $font-size: .9em;
+  $left-padding: .5em;
+
+  color: $font-color;
+  font-size: $font-size;
+  font-weight: bold;
+  margin-right: auto;
+  padding-left: $left-padding;
+}
+
+.go-to-login-text {
+  cursor: pointer;
+  margin-top: 1em;
+}
+
+.use-it-text {
+  font-weight: bold;
+}
+
+.primary-button {
+  $font-size: 1.25em;
+  $button-height: 2em;
+  $button-width: 7.5em;
+  $top-margin: 1.8em;
+
+  font-size: $font-size;
+  height: $button-height;
+  margin-top: $top-margin;
+  width: $button-width;
+}

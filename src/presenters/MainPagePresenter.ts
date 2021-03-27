@@ -1,5 +1,6 @@
 import MainPageComponent from 'components/pages/main-page/MainPageComponent';
 import Presenter from 'presenters/Presenter';
+import Router from 'router/Router';
 import RoutesEnum from 'router/RoutesEnum';
 
 export default class MainPagePresenter implements Presenter {
@@ -13,6 +14,6 @@ export default class MainPagePresenter implements Presenter {
   }
 
   private static async handlePlayButtonClick(): Promise<void> {
-    window.location.hash = RoutesEnum.TEST;
+    Router.goToRoute(RoutesEnum.REGISTRATION);
   }
 }

@@ -1,4 +1,4 @@
-const buttonClass = 'play-button';
+const buttonClass = 'primary-button';
 
 export default {
   getButtonClass(): string {
