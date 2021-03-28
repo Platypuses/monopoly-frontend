@@ -19,8 +19,7 @@ export default class RegistrationPagePresenter implements Presenter {
     this.pageComponent.render();
 
     setTimeout(
-      () =>
-        ModalWindowComponent.openWindow(this.pageComponent.getModalWindow()),
+      () => ModalWindowComponent.openWindow(this.pageComponent.modalWindow),
       100
     );
 
@@ -28,16 +27,18 @@ export default class RegistrationPagePresenter implements Presenter {
   }
 
   private initHandlers() {
-    const modalWindow = this.pageComponent.getModalWindow();
+    const { modalWindow } = this.pageComponent;
 
     modalWindow.onmousedown = (event) =>
       RegistrationPagePresenter.handleModalWindowClick(event, modalWindow);
 
-    this.pageComponent.getGoToLoginTextElement().onclick = () =>
+    this.pageComponent.goToLoginTextElement.onclick = () =>
       RegistrationPagePresenter.handleGoToLoginTextClick(modalWindow);
 
-    this.pageComponent.getRegisterAccountButtonElement().onclick =
-      RegistrationPagePresenter.handleRegisterAccountButtonClick;
+    this.pageComponent.registerAccountButtonElement.onclick = () =>
+      RegistrationPagePresenter.handleRegisterAccountButtonClick(
+        this.pageComponent
+      );
   }
 
   private static handleModalWindowClick(
@@ -57,7 +58,16 @@ export default class RegistrationPagePresenter implements Presenter {
     setTimeout(() => Router.goToRoute(RoutesEnum.MAIN), 300);
   }
 
-  private static handleRegisterAccountButtonClick() {
-    console.log('Register account');
+  private static handleRegisterAccountButtonClick(
+    pageComponent: RegistrationPageComponent
+  ) {
+    const nickname = pageComponent.nicknameFieldElement.value;
+    const password = pageComponent.passwordFieldElement.value;
+    const passwordConfirmation =
+      pageComponent.passwordConfirmationFieldElement.value;
+
+    console.log(
+      `Register account: ${nickname}, ${password}, ${passwordConfirmation}`
+    );
   }
 }

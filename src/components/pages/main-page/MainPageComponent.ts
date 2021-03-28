@@ -7,7 +7,7 @@ import './main-page.scss';
 const pageRootClass = 'main-page-content';
 
 export default class MainPageComponent extends BasePageComponent {
-  private playButtonElement: HTMLElement | null = null;
+  private _playButtonElement: HTMLElement | null = null;
 
   render(): void {
     this.renderPageContent();
@@ -16,7 +16,7 @@ export default class MainPageComponent extends BasePageComponent {
   }
 
   private renderPageContent() {
-    this.getRootElement().innerHTML = mainPageTemplate();
+    this.rootElement.innerHTML = mainPageTemplate();
   }
 
   private static setBackgroundImage() {
@@ -27,13 +27,13 @@ export default class MainPageComponent extends BasePageComponent {
   }
 
   private setPlayButtonElement() {
-    const playButtonClass = PlayButtonComponent.getButtonClass();
-    this.playButtonElement = <HTMLElement>(
+    const playButtonClass = PlayButtonComponent.buttonClass;
+    this._playButtonElement = <HTMLElement>(
       document.getElementsByClassName(playButtonClass)[0]
     );
   }
 
-  getPlayButtonElement(): HTMLElement {
-    return <HTMLElement>this.playButtonElement;
+  get playButtonElement(): HTMLElement {
+    return <HTMLElement>this._playButtonElement;
   }
 }

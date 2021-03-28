@@ -1,7 +1,7 @@
 export default abstract class BasePageComponent {
   private rootElementClass = 'root';
 
-  protected getRootElement(): HTMLElement {
+  protected get rootElement(): HTMLElement {
     return <HTMLElement>(
       document.getElementsByClassName(this.rootElementClass)[0]
     );

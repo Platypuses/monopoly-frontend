@@ -9,7 +9,7 @@ export default class MainPagePresenter implements Presenter {
   async initAndRenderView(): Promise<void> {
     this.pageComponent.render();
 
-    const playButtonElement = this.pageComponent.getPlayButtonElement();
+    const { playButtonElement } = this.pageComponent;
     playButtonElement.onclick = MainPagePresenter.handlePlayButtonClick;
   }
 

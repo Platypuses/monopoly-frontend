@@ -5,7 +5,7 @@ import testTemplate from './test.hbs';
 
 export default class TestPageComponent extends BasePageComponent {
   render(users: Array<UserDto>): void {
-    const rootElement = this.getRootElement();
+    const { rootElement } = this;
 
     rootElement.innerHTML = testTemplate({ users });
 

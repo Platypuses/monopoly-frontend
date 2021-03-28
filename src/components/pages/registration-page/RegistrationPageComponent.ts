@@ -4,53 +4,77 @@ import BasePageComponent from 'components/pages/BasePageComponent';
 import registrationPageTemplate from './registration-page.hbs';
 import './registration-page.scss';
 
+const nicknameFieldId = 'nickname';
+const passwordFieldId = 'password';
+const passwordConfirmationFieldId = 'password-confirmation';
 const goToLoginTextClass = 'go-to-login-text';
 
 export default class RegistrationPageComponent extends BasePageComponent {
-  private modalWindow: HTMLElement | null = null;
+  private _modalWindow: HTMLElement | null = null;
 
-  private goToLoginTextElement: HTMLElement | null = null;
+  private _nicknameFieldElement: HTMLElement | null = null;
 
-  private registerAccountButtonElement: HTMLElement | null = null;
+  private _passwordFieldElement: HTMLElement | null = null;
+
+  private _passwordConfirmationFieldElement: HTMLElement | null = null;
+
+  private _goToLoginTextElement: HTMLElement | null = null;
+
+  private _registerAccountButtonElement: HTMLElement | null = null;
 
   render(): void {
     this.renderPageContent();
-    this.setGoToLoginTextElement();
-    this.setRegisterAccountButtonElement();
+    this.setElements();
   }
 
   private renderPageContent() {
     const windowContent = registrationPageTemplate();
 
-    this.modalWindow = BasePageComponent.htmlStringToElement(
+    this._modalWindow = BasePageComponent.htmlStringToElement(
       ModalWindowComponent.render(windowContent)
     );
 
-    this.getRootElement().appendChild(this.modalWindow);
+    this.rootElement.appendChild(this._modalWindow);
   }
 
-  private setGoToLoginTextElement() {
-    this.goToLoginTextElement = <HTMLElement>(
+  private setElements() {
+    this._nicknameFieldElement = document.getElementById(nicknameFieldId);
+    this._passwordFieldElement = document.getElementById(passwordFieldId);
+    this._passwordConfirmationFieldElement = document.getElementById(
+      passwordConfirmationFieldId
+    );
+
+    this._goToLoginTextElement = <HTMLElement>(
       document.getElementsByClassName(goToLoginTextClass)[0]
     );
-  }
 
-  private setRegisterAccountButtonElement() {
-    const registerAccountButtonClass = PrimaryButtonComponent.getButtonClass();
-    this.registerAccountButtonElement = <HTMLElement>(
+    const registerAccountButtonClass = PrimaryButtonComponent.buttonClass;
+    this._registerAccountButtonElement = <HTMLElement>(
       document.getElementsByClassName(registerAccountButtonClass)[0]
     );
   }
 
-  getModalWindow(): HTMLElement {
-    return <HTMLElement>this.modalWindow;
+  get modalWindow(): HTMLElement {
+    return <HTMLElement>this._modalWindow;
   }
 
-  getGoToLoginTextElement(): HTMLElement {
-    return <HTMLElement>this.goToLoginTextElement;
+  get nicknameFieldElement(): HTMLInputElement {
+    return <HTMLInputElement>this._nicknameFieldElement;
   }
 
-  getRegisterAccountButtonElement(): HTMLElement {
-    return <HTMLElement>this.registerAccountButtonElement;
+  get passwordFieldElement(): HTMLInputElement {
+    return <HTMLInputElement>this._passwordFieldElement;
+  }
+
+  get passwordConfirmationFieldElement(): HTMLInputElement {
+    return <HTMLInputElement>this._passwordConfirmationFieldElement;
+  }
+
+  get goToLoginTextElement(): HTMLElement {
+    return <HTMLElement>this._goToLoginTextElement;
+  }
+
+  get registerAccountButtonElement(): HTMLElement {
+    return <HTMLElement>this._registerAccountButtonElement;
   }
 }

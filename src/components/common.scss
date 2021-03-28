@@ -35,3 +35,8 @@ a {
   color: $link-color;
   text-decoration: none;
 }
+
+input:focus,
+button:focus {
+  outline: none;
+}
