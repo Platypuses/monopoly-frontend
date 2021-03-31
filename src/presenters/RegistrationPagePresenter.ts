@@ -30,7 +30,7 @@ export default class RegistrationPagePresenter implements Presenter {
     const { modalWindow } = this.pageComponent;
 
     modalWindow.onmousedown = (event) =>
-      RegistrationPagePresenter.handleModalWindowClick(event, modalWindow);
+      ModalWindowComponent.handleClick(event, modalWindow, RoutesEnum.MAIN);
 
     this.pageComponent.goToLoginTextElement.onclick = () =>
       RegistrationPagePresenter.handleGoToLoginTextClick(modalWindow);
@@ -39,18 +39,6 @@ export default class RegistrationPagePresenter implements Presenter {
       RegistrationPagePresenter.handleRegisterAccountButtonClick(
         this.pageComponent
       );
-  }
-
-  private static handleModalWindowClick(
-    event: MouseEvent,
-    modalWindow: HTMLElement
-  ) {
-    if (ModalWindowComponent.isClickInsideModalWindow(event)) {
-      return;
-    }
-
-    ModalWindowComponent.closeWindow(modalWindow);
-    setTimeout(() => Router.goToRoute(RoutesEnum.MAIN), 300);
   }
 
   private static handleGoToLoginTextClick(modalWindow: HTMLElement) {

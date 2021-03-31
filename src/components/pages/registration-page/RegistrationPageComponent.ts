@@ -1,5 +1,4 @@
 import PrimaryButtonComponent from 'components/buttons/primary-button/PrimaryButtonComponent';
-import ModalWindowComponent from 'components/modal-window/ModalWindowComponent';
 import BasePageComponent from 'components/pages/BasePageComponent';
 import registrationPageTemplate from './registration-page.hbs';
 import './registration-page.scss';
@@ -28,10 +27,8 @@ export default class RegistrationPageComponent extends BasePageComponent {
   }
 
   private renderPageContent() {
-    const windowContent = registrationPageTemplate();
-
     this._modalWindow = BasePageComponent.htmlStringToElement(
-      ModalWindowComponent.render(windowContent)
+      registrationPageTemplate()
     );
 
     this.rootElement.appendChild(this._modalWindow);

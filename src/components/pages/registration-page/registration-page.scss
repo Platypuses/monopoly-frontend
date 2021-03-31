@@ -1,4 +1,4 @@
-.modal-window-content {
+.registration-modal-window {
   border-radius: 4em;
 }
 
@@ -14,7 +14,9 @@
   margin-top: 1.5em;
 }
 
-.text-input-field {
+.nickname-field,
+.password-field,
+.password-confirmation-field {
   width: 13.5em;
 }
 
@@ -51,7 +53,7 @@
   font-weight: bold;
 }
 
-.primary-button {
+.create-account-button {
   $font-size: 1.25em;
   $button-height: 2em;
   $button-width: 7.5em;

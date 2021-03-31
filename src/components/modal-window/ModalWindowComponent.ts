@@ -1,14 +1,16 @@
-import modalWindowTemplate from './modal-window.hbs';
+import Router from 'router/Router';
+import RoutesEnum from 'router/RoutesEnum';
 import './modal-window.scss';
 
 const openedWindowClass = 'opened-modal-window';
 const windowContentClass = 'modal-window-content';
 
-export default {
-  render(windowContent: string): string {
-    return modalWindowTemplate({ windowContent });
-  },
+function isClickInsideModalWindow(event: MouseEvent): boolean {
+  const targetElement = event.target as HTMLElement;
+  return targetElement.closest(`.${windowContentClass}`) !== null;
+}
 
+export default {
   openWindow(modalWindow: HTMLElement): void {
     modalWindow.classList.add(openedWindowClass);
   },
@@ -17,8 +19,16 @@ export default {
     modalWindow.classList.remove(openedWindowClass);
   },
 
-  isClickInsideModalWindow(event: MouseEvent): boolean {
-    const targetElement = event.target as HTMLElement;
-    return targetElement.closest(`.${windowContentClass}`) !== null;
+  handleClick(
+    event: MouseEvent,
+    modalWindow: HTMLElement,
+    backgroundRoute: RoutesEnum
+  ): void {
+    if (isClickInsideModalWindow(event)) {
+      return;
+    }
+
+    this.closeWindow(modalWindow);
+    setTimeout(() => Router.goToRoute(backgroundRoute), 300);
   },
 };
