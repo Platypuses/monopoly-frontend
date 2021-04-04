@@ -24,6 +24,7 @@
     },
     "target": "ES6",
     "module": "ES6",
+    "moduleResolution": "Node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "sourceMap": true,
