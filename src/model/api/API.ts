@@ -3,16 +3,20 @@ import axios from 'axios';
 const backendBaseUrl =
   process.env.BACKEND_BASE_URL ?? 'http://localhost:8080/api/v1';
 
-const api = axios.create({
+const API = axios.create({
   baseURL: backendBaseUrl,
   responseType: 'json',
 });
 
-api.interceptors.response.use(
+API.interceptors.response.use(
   (response) => response,
   (error) => {
-    throw Error(error.response.data.message);
+    if (error.response === undefined) {
+      alert(error);
+    } else {
+      alert(error.response.data.message);
+    }
   }
 );
 
-export default api;
+export default API;

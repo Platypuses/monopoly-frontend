@@ -15,17 +15,19 @@ export default {
     const nicknameLength = nickname.length;
 
     if (nicknameLength < 5 || nicknameLength > 15) {
-      throw Error(INVALID_NICKNAME_LENGTH_ERROR);
+      alert(INVALID_NICKNAME_LENGTH_ERROR);
+      return;
     }
 
     const passwordLength = password.length;
 
     if (passwordLength < 5 || passwordLength > 30) {
-      throw Error(INVALID_PASSWORD_LENGTH_ERROR);
+      alert(INVALID_PASSWORD_LENGTH_ERROR);
+      return;
     }
 
     if (password !== passwordConfirmation) {
-      throw Error(PASSWORDS_MISMATCH);
+      alert(PASSWORDS_MISMATCH);
     }
   },
 };

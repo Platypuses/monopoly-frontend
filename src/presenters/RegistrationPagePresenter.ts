@@ -57,20 +57,14 @@ export default class RegistrationPagePresenter implements Presenter {
     const password = pageComponent.passwordFieldElement.value.trim();
     const passwordConfirmation = pageComponent.passwordConfirmationFieldElement.value.trim();
 
-    try {
-      RegistrationRequestValidator.validate(
-        nickname,
-        password,
-        passwordConfirmation
-      );
+    RegistrationRequestValidator.validate(
+      nickname,
+      password,
+      passwordConfirmation
+    );
 
-      await UserApi.registerUser({ nickname, password });
-      const tokensPair = await AuthApi.authUser({ nickname, password });
-      TokensLocalStorage.saveTokensToStorage(tokensPair);
-    } catch (e) {
-      alert(e.message);
-      return;
-    }
+    await UserApi.registerUser({ nickname, password });
+    await AuthApi.authUser({ nickname, password });
 
     console.log(`Access token: ${TokensLocalStorage.getAccessToken()}`);
     console.log(`Refresh token: ${TokensLocalStorage.getRefreshToken()}`);
