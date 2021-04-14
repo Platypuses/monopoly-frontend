@@ -1,4 +1,5 @@
 import TestPageComponent from 'components/pages/test-page/TestPageComponent';
+import UserApi from 'model/api/UserApi';
 import UserDto from 'model/dto/UserDto';
 import Presenter from 'presenters/Presenter';
 
@@ -22,5 +23,6 @@ export default class TestPagePresenter implements Presenter {
 
   async initAndRenderView(): Promise<void> {
     this.pageComponent.render(this.users);
+    await UserApi.getAuthenticatedUser();
   }
 }

@@ -71,7 +71,7 @@ export default class RegistrationPageComponent extends BasePageComponent {
     return <HTMLElement>this._goToLoginTextElement;
   }
 
-  get registerAccountButtonElement(): HTMLElement {
-    return <HTMLElement>this._registerAccountButtonElement;
+  get registerAccountButtonElement(): HTMLButtonElement {
+    return <HTMLButtonElement>this._registerAccountButtonElement;
   }
 }

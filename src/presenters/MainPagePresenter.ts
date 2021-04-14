@@ -14,6 +14,7 @@ export default class MainPagePresenter implements Presenter {
   }
 
   private static async handlePlayButtonClick(): Promise<void> {
+    // TODO: Replace REGISTRATION with LOGIN
     Router.goToRoute(RoutesEnum.REGISTRATION);
   }
 }

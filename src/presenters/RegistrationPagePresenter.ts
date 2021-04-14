@@ -2,6 +2,7 @@ import ModalWindowComponent from 'components/modal-window/ModalWindowComponent';
 import RegistrationPageComponent from 'components/pages/registration-page/RegistrationPageComponent';
 import AuthApi from 'model/api/AuthApi';
 import UserApi from 'model/api/UserApi';
+import ErrorHandler from 'model/error/ErrorHandler';
 import TokensLocalStorage from 'model/storage/TokensLocalStorage';
 import RegistrationRequestValidator from 'model/validators/RegistrationRequestValidator';
 import MainPagePresenter from 'presenters/MainPagePresenter';
@@ -39,10 +40,19 @@ export default class RegistrationPagePresenter implements Presenter {
     this.pageComponent.goToLoginTextElement.onclick = () =>
       RegistrationPagePresenter.handleGoToLoginTextClick(modalWindow);
 
-    this.pageComponent.registerAccountButtonElement.onclick = async () =>
-      RegistrationPagePresenter.handleRegisterAccountButtonClick(
-        this.pageComponent
-      );
+    this.pageComponent.registerAccountButtonElement.onclick = async () => {
+      this.pageComponent.registerAccountButtonElement.disabled = true;
+
+      try {
+        await RegistrationPagePresenter.handleRegisterAccountButtonClick(
+          this.pageComponent
+        );
+      } catch (e) {
+        ErrorHandler.handleError(e);
+      }
+
+      this.pageComponent.registerAccountButtonElement.disabled = false;
+    };
   }
 
   private static handleGoToLoginTextClick(modalWindow: HTMLElement) {

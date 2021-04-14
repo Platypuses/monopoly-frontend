@@ -19,4 +19,9 @@ export default {
   getRefreshToken(): string | null {
     return window.localStorage.getItem(refreshTokenStorageKey);
   },
+
+  removeTokensFromStorage(): void {
+    window.localStorage.removeItem(accessTokenStorageKey);
+    window.localStorage.removeItem(refreshTokenStorageKey);
+  },
 };

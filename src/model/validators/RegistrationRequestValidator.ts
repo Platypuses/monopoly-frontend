@@ -1,3 +1,5 @@
+import AppError from 'model/error/AppError';
+
 const INVALID_NICKNAME_LENGTH_ERROR =
   'Никнейм должен быть длиной от 5 до 15 символов';
 
@@ -15,19 +17,17 @@ export default {
     const nicknameLength = nickname.length;
 
     if (nicknameLength < 5 || nicknameLength > 15) {
-      alert(INVALID_NICKNAME_LENGTH_ERROR);
-      return;
+      throw new AppError(INVALID_NICKNAME_LENGTH_ERROR);
     }
 
     const passwordLength = password.length;
 
     if (passwordLength < 5 || passwordLength > 30) {
-      alert(INVALID_PASSWORD_LENGTH_ERROR);
-      return;
+      throw new AppError(INVALID_PASSWORD_LENGTH_ERROR);
     }
 
     if (password !== passwordConfirmation) {
-      alert(PASSWORDS_MISMATCH);
+      throw new AppError(PASSWORDS_MISMATCH);
     }
   },
 };
