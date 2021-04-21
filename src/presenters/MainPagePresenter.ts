@@ -1,4 +1,5 @@
 import MainPageComponent from 'components/pages/main-page/MainPageComponent';
+import TokensStorage from 'model/storage/TokensStorage';
 import Presenter from 'presenters/Presenter';
 import Router from 'router/Router';
 import RoutesEnum from 'router/RoutesEnum';
@@ -14,7 +15,11 @@ export default class MainPagePresenter implements Presenter {
   }
 
   private static async handlePlayButtonClick(): Promise<void> {
-    // TODO: Replace REGISTRATION with LOGIN
-    Router.goToRoute(RoutesEnum.REGISTRATION);
+    if (TokensStorage.isUserAuthorized()) {
+      Router.goToRoute(RoutesEnum.TEST);
+    } else {
+      // TODO: Replace REGISTRATION with LOGIN
+      Router.goToRoute(RoutesEnum.REGISTRATION);
+    }
   }
 }

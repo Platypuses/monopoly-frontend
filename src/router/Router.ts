@@ -1,3 +1,4 @@
+import ErrorHandler from 'model/error/ErrorHandler';
 import MainPagePresenter from 'presenters/MainPagePresenter';
 import Presenter from 'presenters/Presenter';
 import RegistrationPagePresenter from 'presenters/RegistrationPagePresenter';
@@ -26,13 +27,16 @@ async function handlePageHashChange(): Promise<void> {
     return;
   }
 
-  await pagePresenter.initAndRenderView();
+  try {
+    await pagePresenter.initAndRenderView();
+  } catch (e) {
+    ErrorHandler.handleError(e);
+  }
 }
 
 export default {
   initRouter(): void {
-    window.addEventListener('hashchange', async () => handlePageHashChange());
-    window.dispatchEvent(new Event('hashchange'));
+    window.addEventListener('hashchange', handlePageHashChange);
   },
 
   goToRoute(route: RoutesEnum): void {

@@ -1,11 +1,11 @@
 import TokensPairDto from 'model/dto/responses/TokensPairDto';
 
-const accessTokenStorageKey = 'access-token';
+let accessToken: string | null = null;
 const refreshTokenStorageKey = 'refresh-token';
 
 export default {
   saveTokensToStorage(tokensPair: TokensPairDto): void {
-    window.localStorage.setItem(accessTokenStorageKey, tokensPair.accessToken);
+    accessToken = tokensPair.accessToken;
     window.localStorage.setItem(
       refreshTokenStorageKey,
       tokensPair.refreshToken
@@ -13,7 +13,7 @@ export default {
   },
 
   getAccessToken(): string | null {
-    return window.localStorage.getItem(accessTokenStorageKey);
+    return accessToken;
   },
 
   getRefreshToken(): string | null {
@@ -21,7 +21,11 @@ export default {
   },
 
   removeTokensFromStorage(): void {
-    window.localStorage.removeItem(accessTokenStorageKey);
+    accessToken = null;
     window.localStorage.removeItem(refreshTokenStorageKey);
+  },
+
+  isUserAuthorized(): boolean {
+    return accessToken != null;
   },
 };

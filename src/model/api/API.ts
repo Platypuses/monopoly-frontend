@@ -1,13 +1,10 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import AppError from 'model/error/AppError';
-import TokensLocalStorage from 'model/storage/TokensLocalStorage';
-import Router from 'router/Router';
-import RoutesEnum from 'router/RoutesEnum';
+import UnauthorizedError from 'model/error/UnauthorizedError';
+import TokensStorage from 'model/storage/TokensStorage';
 
 const backendBaseUrl =
   process.env.BACKEND_BASE_URL ?? 'http://localhost:8080/api/v1';
-
-// TODO: add access token validation
 
 const API = axios.create({
   baseURL: backendBaseUrl,
@@ -17,7 +14,7 @@ const API = axios.create({
 function addAccessTokenToRequest(
   requestConfig: AxiosRequestConfig
 ): AxiosRequestConfig {
-  const accessToken = TokensLocalStorage.getAccessToken();
+  const accessToken = TokensStorage.getAccessToken();
 
   if (accessToken !== null) {
     requestConfig.headers = {
@@ -34,13 +31,11 @@ API.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response === undefined) {
-      throw new AppError('Ошибка сети');
+      throw new AppError('Не удалось установить связь с сервером');
     }
 
     if (error.response.status === 401) {
-      TokensLocalStorage.removeTokensFromStorage();
-      // TODO: Replace REGISTRATION with LOGIN
-      Router.goToRoute(RoutesEnum.REGISTRATION);
+      throw new UnauthorizedError();
     } else {
       throw new AppError(error.response.data.message);
     }

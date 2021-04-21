@@ -3,7 +3,7 @@ import RegistrationPageComponent from 'components/pages/registration-page/Regist
 import AuthApi from 'model/api/AuthApi';
 import UserApi from 'model/api/UserApi';
 import ErrorHandler from 'model/error/ErrorHandler';
-import TokensLocalStorage from 'model/storage/TokensLocalStorage';
+import TokensStorage from 'model/storage/TokensStorage';
 import RegistrationRequestValidator from 'model/validators/RegistrationRequestValidator';
 import MainPagePresenter from 'presenters/MainPagePresenter';
 import Presenter from 'presenters/Presenter';
@@ -76,8 +76,8 @@ export default class RegistrationPagePresenter implements Presenter {
     await UserApi.registerUser({ nickname, password });
     await AuthApi.authUser({ nickname, password });
 
-    console.log(`Access token: ${TokensLocalStorage.getAccessToken()}`);
-    console.log(`Refresh token: ${TokensLocalStorage.getRefreshToken()}`);
+    console.log(`Access token: ${TokensStorage.getAccessToken()}`);
+    console.log(`Refresh token: ${TokensStorage.getRefreshToken()}`);
 
     Router.goToRoute(RoutesEnum.TEST);
   }
