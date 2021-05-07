@@ -15,11 +15,12 @@ export default class MainPagePresenter implements Presenter {
   }
 
   private static async handlePlayButtonClick(): Promise<void> {
-    if (TokensStorage.isUserAuthorized()) {
-      Router.goToRoute(RoutesEnum.TEST);
-    } else {
+    if (TokensStorage.isUserNotAuthorized()) {
       // TODO: Replace REGISTRATION with LOGIN
       Router.goToRoute(RoutesEnum.REGISTRATION);
+      return;
     }
+
+    Router.goToRoute(RoutesEnum.MAIN_MENU);
   }
 }

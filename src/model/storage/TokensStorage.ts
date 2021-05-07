@@ -25,7 +25,7 @@ export default {
     window.localStorage.removeItem(refreshTokenStorageKey);
   },
 
-  isUserAuthorized(): boolean {
-    return accessToken != null;
+  isUserNotAuthorized(): boolean {
+    return accessToken === null;
   },
 };

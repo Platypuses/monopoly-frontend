@@ -1,0 +1,105 @@
+.main-menu-page {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.main-menu-page-header {
+  align-items: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.main-menu-page-monopoly-text {
+  $font-size: 10em;
+  $shadow-blur: .05em;
+  $shadow-color: #cbb97a;
+
+  font-family: Algerian, sans-serif;
+  font-size: $font-size;
+  font-style: normal;
+  font-weight: normal;
+  text-shadow: 0 0 $shadow-blur $shadow-color;
+}
+
+.main-menu-page-content {
+  $background-color: #efede0;
+
+  align-items: flex-start;
+  background-color: $background-color;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+
+.menu-actions-container {
+  $top-margin: 60px;
+  $container-width: 75em;
+
+  align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: $top-margin;
+  width: $container-width;
+}
+
+.menu-action {
+  $border-color: #cbb97a;
+  $border-radius: 2.2em;
+  $element-height: 23.5em;
+  $element-width: 32em;
+
+  align-items: center;
+  border: 3px solid $border-color;
+  border-radius: $border-radius;
+  display: flex;
+  flex-direction: column;
+  height: $element-height;
+  justify-content: flex-start;
+  width: $element-width;
+}
+
+.action-button {
+  $border-radius: .8em;
+  $font-size: 1.8em;
+  $button-height: 2.05em;
+  $bottom-margin: 1.25em;
+  $top-margin: 1em;
+  $button-width: 9em;
+
+  border-radius: $border-radius;
+  font-size: $font-size;
+  height: $button-height;
+  margin-bottom: $bottom-margin;
+  margin-top: $top-margin;
+  width: $button-width;
+}
+
+.button-description {
+  font-size: 1.5em;
+  text-align: center;
+  width: 72%;
+}
+
+.icon-container {
+  $bottom-margin: 1em;
+  $right-margin: 3em;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-bottom: $bottom-margin;
+  margin-right: $right-margin;
+  margin-top: auto;
+  width: 100%;
+}

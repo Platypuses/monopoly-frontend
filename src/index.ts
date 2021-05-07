@@ -11,7 +11,6 @@ function dispatchNewHashChangeEvent() {
 
 document.onsubmit = (event) => event.preventDefault();
 Router.initRouter();
-
 AuthApi.renewTokens()
   .then(() => {
     dispatchNewHashChangeEvent();

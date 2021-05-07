@@ -3,7 +3,6 @@ import RegistrationPageComponent from 'components/pages/registration-page/Regist
 import AuthApi from 'model/api/AuthApi';
 import UserApi from 'model/api/UserApi';
 import ErrorHandler from 'model/error/ErrorHandler';
-import TokensStorage from 'model/storage/TokensStorage';
 import RegistrationRequestValidator from 'model/validators/RegistrationRequestValidator';
 import MainPagePresenter from 'presenters/MainPagePresenter';
 import Presenter from 'presenters/Presenter';
@@ -40,18 +39,14 @@ export default class RegistrationPagePresenter implements Presenter {
     this.pageComponent.goToLoginTextElement.onclick = () =>
       RegistrationPagePresenter.handleGoToLoginTextClick(modalWindow);
 
-    this.pageComponent.registerAccountButtonElement.onclick = async () => {
-      this.pageComponent.registerAccountButtonElement.disabled = true;
+    this.pageComponent.createAccountButtonElement.onclick = async () => {
+      this.pageComponent.createAccountButtonElement.disabled = true;
 
-      try {
-        await RegistrationPagePresenter.handleRegisterAccountButtonClick(
-          this.pageComponent
-        );
-      } catch (e) {
-        ErrorHandler.handleError(e);
-      }
+      await RegistrationPagePresenter.handleRegisterAccountButtonClick(
+        this.pageComponent
+      ).catch(ErrorHandler.handleError);
 
-      this.pageComponent.registerAccountButtonElement.disabled = false;
+      this.pageComponent.createAccountButtonElement.disabled = false;
     };
   }
 
@@ -76,9 +71,6 @@ export default class RegistrationPagePresenter implements Presenter {
     await UserApi.registerUser({ nickname, password });
     await AuthApi.authUser({ nickname, password });
 
-    console.log(`Access token: ${TokensStorage.getAccessToken()}`);
-    console.log(`Refresh token: ${TokensStorage.getRefreshToken()}`);
-
-    Router.goToRoute(RoutesEnum.TEST);
+    Router.goToRoute(RoutesEnum.MAIN_MENU);
   }
 }

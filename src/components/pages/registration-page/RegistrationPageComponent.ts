@@ -1,4 +1,3 @@
-import PrimaryButtonComponent from 'components/buttons/primary-button/PrimaryButtonComponent';
 import BasePageComponent from 'components/pages/BasePageComponent';
 import registrationPageTemplate from './registration-page.hbs';
 import './registration-page.scss';
@@ -7,19 +6,20 @@ const nicknameFieldId = 'nickname';
 const passwordFieldId = 'password';
 const passwordConfirmationFieldId = 'password-confirmation';
 const goToLoginTextClass = 'go-to-login-text';
+const createAccountButtonClass = 'create-account-button';
 
 export default class RegistrationPageComponent extends BasePageComponent {
   private _modalWindow: HTMLElement | null = null;
 
-  private _nicknameFieldElement: HTMLElement | null = null;
+  private _nicknameFieldElement: HTMLInputElement | null = null;
 
-  private _passwordFieldElement: HTMLElement | null = null;
+  private _passwordFieldElement: HTMLInputElement | null = null;
 
-  private _passwordConfirmationFieldElement: HTMLElement | null = null;
+  private _passwordConfirmationFieldElement: HTMLInputElement | null = null;
 
   private _goToLoginTextElement: HTMLElement | null = null;
 
-  private _registerAccountButtonElement: HTMLElement | null = null;
+  private _createAccountButtonElement: HTMLButtonElement | null = null;
 
   render(): void {
     this.renderPageContent();
@@ -35,19 +35,24 @@ export default class RegistrationPageComponent extends BasePageComponent {
   }
 
   private setElements() {
-    this._nicknameFieldElement = document.getElementById(nicknameFieldId);
-    this._passwordFieldElement = document.getElementById(passwordFieldId);
-    this._passwordConfirmationFieldElement = document.getElementById(
-      passwordConfirmationFieldId
+    this._nicknameFieldElement = <HTMLInputElement>(
+      document.getElementById(nicknameFieldId)
+    );
+
+    this._passwordFieldElement = <HTMLInputElement>(
+      document.getElementById(passwordFieldId)
+    );
+
+    this._passwordConfirmationFieldElement = <HTMLInputElement>(
+      document.getElementById(passwordConfirmationFieldId)
     );
 
     this._goToLoginTextElement = <HTMLElement>(
       document.getElementsByClassName(goToLoginTextClass)[0]
     );
 
-    const registerAccountButtonClass = PrimaryButtonComponent.buttonClass;
-    this._registerAccountButtonElement = <HTMLElement>(
-      document.getElementsByClassName(registerAccountButtonClass)[0]
+    this._createAccountButtonElement = <HTMLButtonElement>(
+      document.getElementsByClassName(createAccountButtonClass)[0]
     );
   }
 
@@ -71,7 +76,7 @@ export default class RegistrationPageComponent extends BasePageComponent {
     return <HTMLElement>this._goToLoginTextElement;
   }
 
-  get registerAccountButtonElement(): HTMLButtonElement {
-    return <HTMLButtonElement>this._registerAccountButtonElement;
+  get createAccountButtonElement(): HTMLButtonElement {
+    return <HTMLButtonElement>this._createAccountButtonElement;
   }
 }

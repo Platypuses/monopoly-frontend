@@ -1,4 +1,5 @@
 import ErrorHandler from 'model/error/ErrorHandler';
+import MainMenuPagePresenter from 'presenters/MainMenuPagePresenter';
 import MainPagePresenter from 'presenters/MainPagePresenter';
 import Presenter from 'presenters/Presenter';
 import RegistrationPagePresenter from 'presenters/RegistrationPagePresenter';
@@ -10,11 +11,13 @@ const testPagePresenter = new TestPagePresenter();
 const registrationPagePresenter = new RegistrationPagePresenter(
   mainPagePresenter
 );
+const mainMenuPagePresenter = new MainMenuPagePresenter();
 
 const pagesDictionary = new Map<string, Presenter>();
 pagesDictionary.set(RoutesEnum.MAIN, mainPagePresenter);
 pagesDictionary.set(RoutesEnum.TEST, testPagePresenter);
 pagesDictionary.set(RoutesEnum.REGISTRATION, registrationPagePresenter);
+pagesDictionary.set(RoutesEnum.MAIN_MENU, mainMenuPagePresenter);
 
 const DEFAULT_ROUTE = RoutesEnum.MAIN;
 
