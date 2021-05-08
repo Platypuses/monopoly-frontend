@@ -7,7 +7,7 @@ import TokensStorage from 'model/storage/TokensStorage';
 
 const backendBaseUrl =
   // @ts-ignore
-  window.env.BACKEND_BASE_URL ?? 'http://localhost:8080/api/v1';
+  window.env?.BACKEND_BASE_URL ?? 'http://monopoly-api.casper.by/api/v1';
 
 const API = axios.create({
   baseURL: backendBaseUrl,
