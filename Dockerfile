@@ -13,4 +13,7 @@ RUN yarn build:prod
 
 FROM nginx:stable-alpine
 COPY --from=build-stage /usr/app-build/dist /usr/share/nginx/html
+COPY entrypoint.sh /usr/share/nginx
+RUN chmod +x /usr/share/nginx/entrypoint.sh
+ENTRYPOINT ["/usr/share/nginx/entrypoint.sh"]
 CMD ["nginx", "-g", "daemon off;"]

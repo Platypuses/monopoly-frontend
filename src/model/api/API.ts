@@ -3,8 +3,11 @@ import AppError from 'model/error/AppError';
 import UnauthorizedError from 'model/error/UnauthorizedError';
 import TokensStorage from 'model/storage/TokensStorage';
 
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+
 const backendBaseUrl =
-  process.env.BACKEND_BASE_URL ?? 'http://localhost:8080/api/v1';
+  // @ts-ignore
+  window.env.BACKEND_BASE_URL ?? 'http://localhost:8080/api/v1';
 
 const API = axios.create({
   baseURL: backendBaseUrl,
