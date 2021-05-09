@@ -1,5 +1,5 @@
 <div class="main-menu-page">
-  <div class="main-menu-page-header">
+  <div class="main-menu-page-header" style="background-image: url({{ backgroundImageSrc }})">
     <span class="main-menu-page-monopoly-text">MONOPOLY</span>
   </div>
   <div class="main-menu-page-content">
@@ -8,14 +8,18 @@
         <button class="primary-button action-button create-lobby-button">Создать лобби</button>
         <span
           class="button-description">Позволяет создать собственное лобби, к нему можно будет присоединиться по ID.</span>
-        <div class="icon-container create-lobby-icon-container"></div>
+        <div class="icon-container">
+          <img src="{{ createLobbyIconSrc }}" alt="loader" width="80">
+        </div>
       </div>
 
       <div class="menu-action">
         <button class="primary-button action-button join-lobby-button">Войти в лобби</button>
         <span
           class="button-description">Для присоединения к лобби друзей достаточно знать ID.</span>
-        <div class="icon-container join-lobby-icon-container"></div>
+        <div class="icon-container">
+          <img src="{{ joinLobbyIconSrc }}" alt="loader" width="80">
+        </div>
       </div>
     </div>
   </div>

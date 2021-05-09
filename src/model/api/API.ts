@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import AppError from 'model/error/AppError';
 import UnauthorizedError from 'model/error/UnauthorizedError';
-import TokensStorage from 'model/storage/TokensStorage';
+import SecurityContextStorage from 'model/storage/SecurityContextStorage';
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 
@@ -17,7 +17,7 @@ const API = axios.create({
 function addAccessTokenToRequest(
   requestConfig: AxiosRequestConfig
 ): AxiosRequestConfig {
-  const accessToken = TokensStorage.getAccessToken();
+  const { accessToken } = SecurityContextStorage;
 
   if (accessToken !== null) {
     requestConfig.headers = {

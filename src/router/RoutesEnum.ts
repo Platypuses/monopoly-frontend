@@ -1,8 +1,8 @@
 enum RoutesEnum {
   MAIN = '#main',
-  TEST = '#test',
   REGISTRATION = '#registration',
   MAIN_MENU = '#main-menu',
+  LOBBY = '#lobby',
 }
 
 export default RoutesEnum;
