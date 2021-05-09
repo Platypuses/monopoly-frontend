@@ -11,7 +11,7 @@ COPY src ./src
 RUN ls -a
 RUN yarn build:prod
 
-FROM nginx:stable-alpine
+FROM nginx:1.19.10-alpine
 COPY --from=build-stage /usr/app-build/dist /usr/share/nginx/html
 COPY entrypoint.sh /usr/share/nginx
 RUN chmod +x /usr/share/nginx/entrypoint.sh
