@@ -1,4 +1,4 @@
-import ModalWindowComponent from 'components/modal-window/ModalWindowComponent';
+import ModalWindowComponent from 'components/library/modal-window/ModalWindowComponent';
 import RegistrationPageComponent from 'components/pages/registration-page/RegistrationPageComponent';
 import AuthApi from 'model/api/AuthApi';
 import UserApi from 'model/api/UserApi';

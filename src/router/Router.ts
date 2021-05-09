@@ -1,28 +1,33 @@
 import ErrorHandler from 'model/error/ErrorHandler';
+import LobbyPagePresenter from 'presenters/LobbyPagePresenter';
 import MainMenuPagePresenter from 'presenters/MainMenuPagePresenter';
 import MainPagePresenter from 'presenters/MainPagePresenter';
 import Presenter from 'presenters/Presenter';
 import RegistrationPagePresenter from 'presenters/RegistrationPagePresenter';
-import TestPagePresenter from 'presenters/TestPagePresenter';
 import RoutesEnum from 'router/RoutesEnum';
 
 const mainPagePresenter = new MainPagePresenter();
-const testPagePresenter = new TestPagePresenter();
 const registrationPagePresenter = new RegistrationPagePresenter(
   mainPagePresenter
 );
 const mainMenuPagePresenter = new MainMenuPagePresenter();
+const lobbyPagePresenter = new LobbyPagePresenter(mainMenuPagePresenter);
 
 const pagesDictionary = new Map<string, Presenter>();
 pagesDictionary.set(RoutesEnum.MAIN, mainPagePresenter);
-pagesDictionary.set(RoutesEnum.TEST, testPagePresenter);
 pagesDictionary.set(RoutesEnum.REGISTRATION, registrationPagePresenter);
 pagesDictionary.set(RoutesEnum.MAIN_MENU, mainMenuPagePresenter);
+pagesDictionary.set(RoutesEnum.LOBBY, lobbyPagePresenter);
 
 const DEFAULT_ROUTE = RoutesEnum.MAIN;
 
+function extractPageArgs(pageRoute: string): string[] {
+  return pageRoute.split('/');
+}
+
 async function handlePageHashChange(): Promise<void> {
-  const pageRoute = window.location.hash;
+  const pageArgs = extractPageArgs(window.location.hash);
+  const pageRoute = <string>pageArgs.shift();
   const pagePresenter = pagesDictionary.get(pageRoute);
 
   if (pagePresenter === undefined) {
@@ -31,7 +36,7 @@ async function handlePageHashChange(): Promise<void> {
   }
 
   try {
-    await pagePresenter.initAndRenderView();
+    await pagePresenter.initAndRenderView(pageArgs);
   } catch (e) {
     ErrorHandler.handleError(e);
   }
@@ -42,7 +47,15 @@ export default {
     window.addEventListener('hashchange', handlePageHashChange);
   },
 
-  goToRoute(route: RoutesEnum): void {
-    window.location.hash = route;
+  goToRoute(route: RoutesEnum, args?: string[]): void {
+    let targetRoute: string = route;
+
+    if (args !== undefined) {
+      args.forEach((routeArg) => {
+        targetRoute += `/${routeArg}`;
+      });
+    }
+
+    window.location.hash = targetRoute;
   },
 };

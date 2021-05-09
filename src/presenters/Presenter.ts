@@ -1,3 +1,3 @@
 export default interface Presenter {
-  initAndRenderView(): Promise<void>;
+  initAndRenderView(args?: string[]): Promise<void>;
 }
