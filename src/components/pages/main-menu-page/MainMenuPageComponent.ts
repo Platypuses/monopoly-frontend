@@ -1,6 +1,6 @@
 import backgroundImageSrc from 'assets/images/background.jpg';
-import createLobbyIconSrc from 'assets/images/create-lobby-icon.png';
-import joinLobbyIconSrc from 'assets/images/join-lobby-icon.png';
+import createLobbyIconSrc from 'assets/images/main-menu/create-lobby-icon.png';
+import joinLobbyIconSrc from 'assets/images/main-menu/join-lobby-icon.png';
 import BasePageComponent from 'components/pages/BasePageComponent';
 import mainMenuPageTemplate from './main-menu-page.hbs';
 import './main-menu-page.scss';

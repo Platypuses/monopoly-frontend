@@ -1,6 +1,7 @@
 import ModalWindowComponent from 'components/library/modal-window/ModalWindowComponent';
 import LobbyPageComponent from 'components/pages/lobby-page/LobbyPageComponent';
 import LobbyApi from 'model/api/LobbyApi';
+import ErrorHandler from 'model/error/ErrorHandler';
 import UnauthorizedError from 'model/error/UnauthorizedError';
 import SecurityContextStorage from 'model/storage/SecurityContextStorage';
 import MainMenuPagePresenter from 'presenters/MainMenuPagePresenter';
@@ -39,10 +40,33 @@ export default class LobbyPagePresenter implements Presenter {
     );
 
     const lobbyInfo = await LobbyApi.getLobbyInfo(lobbyId);
-    LobbyPageComponent.displayLobbyInfo(lobbyInfo);
+    this.pageComponent.displayLobbyInfo(lobbyInfo);
 
-    // this.initHandlers();
+    this.initHandlers(lobbyId);
   }
 
-  // private initHandlers() {}
+  private initHandlers(lobbyId: number) {
+    this.pageComponent.copyLobbyIdButtonElement.onclick = async () =>
+      LobbyPagePresenter.handleCopyLobbyIdButtonClick(lobbyId).catch(
+        ErrorHandler.handleError
+      );
+
+    this.pageComponent.exitLobbyButtonElement.onclick = async () =>
+      LobbyPagePresenter.handleExitLobbyButtonClick(this.pageComponent).catch(
+        ErrorHandler.handleError
+      );
+  }
+
+  private static async handleCopyLobbyIdButtonClick(lobbyId: number) {
+    await navigator.clipboard.writeText(lobbyId.toString());
+    alert('ID лобби успешно скопировано');
+  }
+
+  private static async handleExitLobbyButtonClick(
+    pageComponent: LobbyPageComponent
+  ) {
+    // TODO: Add exit lobby API call
+    ModalWindowComponent.closeWindow(pageComponent.modalWindow);
+    setTimeout(() => Router.goToRoute(RoutesEnum.MAIN_MENU), 300);
+  }
 }

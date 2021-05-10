@@ -32,11 +32,6 @@ function buildLobbyParticipantsMock(): LobbyParticipantDto[] {
       nickname: 'Billy_Herrington',
       isCreator: false,
     },
-    {
-      id: 4,
-      nickname: 'MonopolyUser',
-      isCreator: false,
-    },
   ];
 }
 

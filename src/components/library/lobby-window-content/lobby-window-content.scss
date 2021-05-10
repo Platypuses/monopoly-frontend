@@ -1,9 +1,121 @@
 .lobby-modal-window-content {
+  $border-radius: 20px;
+  $window-height: 500px;
+  $window-width: 740px;
+
   align-items: center;
-  border-radius: 4em;
+  border-radius: $border-radius;
+  display: flex;
+  flex-direction: row;
+  height: $window-height;
+  justify-content: space-between;
+  width: $window-width;
+}
+
+.lobby-page-section {
+  align-items: center;
   display: flex;
   flex-direction: column;
   height: 100%;
+  justify-content: space-between;
+}
+
+.lobby-participants-list-section {
+  width: 280px;
+}
+
+.participants-text {
+  font-size: 28px;
+}
+
+.lobby-page-section-element {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.lobby-participants-list {
+  height: 100%;
+  margin-top: 15px;
+}
+
+.lobby-participant-info {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
   justify-content: flex-start;
   width: 100%;
+
+  img {
+    width: 45px;
+  }
+}
+
+.lobby-creator-info {
+  $border-width: 3px;
+  $border-color: #cbb97a;
+  $bottom-padding: 25px;
+
+  border-bottom: $border-width solid $border-color;
+  padding-bottom: $bottom-padding;
+}
+
+.participant-nickname-text {
+  font-size: 18px;
+  margin-left: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.creator-nickname-text {
+  margin-top: 15px;
+}
+
+.available-position-text {
+  opacity: .5;
+}
+
+.lobby-id-section-element {
+  height: 90px;
+}
+
+.lobby-id-text {
+  $font-size: 30px;
+
+  font-family: Algerian, sans-serif;
+  font-size: $font-size;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.copy-lobby-id-button {
+  $border-radius: 20px;
+  $font-size: 20px;
+  $left-right-padding: 25px;
+  $bottom-padding: 5px;
+
+  border-radius: $border-radius;
+  font-size: $font-size;
+  padding: 0 $left-right-padding $bottom-padding;
+}
+
+.lobby-actions-buttons {
+  height: 120px;
+}
+
+.lobby-action-button {
+  $border-radius: 20px;
+  $font-size: 22px;
+  $button-height: 50px;
+  $bottom-padding: 2px;
+  $button-width: 250px;
+
+  border-radius: $border-radius;
+  font-size: $font-size;
+  height: $button-height;
+  padding-bottom: $bottom-padding;
+  width: $button-width;
 }
