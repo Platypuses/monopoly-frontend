@@ -1,7 +1,7 @@
 import 'components/common.scss';
 import AuthApi from 'model/api/AuthApi';
 import ErrorHandler from 'model/error/ErrorHandler';
-import Router from 'router/Router';
+import configureApplication from './configureApplication';
 
 const REFRESH_TOKENS_TIMEOUT = 100 * 60 * 1000; // 100 minutes in milliseconds
 
@@ -9,8 +9,8 @@ function dispatchNewHashChangeEvent() {
   window.dispatchEvent(new Event('hashchange'));
 }
 
-document.onsubmit = (event) => event.preventDefault();
-Router.initRouter();
+configureApplication();
+
 AuthApi.renewTokens()
   .then(() => {
     dispatchNewHashChangeEvent();
