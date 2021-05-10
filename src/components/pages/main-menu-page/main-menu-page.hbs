@@ -3,13 +3,17 @@
     <span class="main-menu-page-monopoly-text">MONOPOLY</span>
   </div>
   <div class="main-menu-page-content">
+    <div class="logout-button">
+      <img src="{{ logoutIconSrc }}" alt="logout" width="60">
+    </div>
+
     <div class="menu-actions-container">
       <div class="menu-action">
         <button class="primary-button action-button create-lobby-button">Создать лобби</button>
         <span
           class="button-description">Позволяет создать собственное лобби, к нему можно будет присоединиться по ID.</span>
         <div class="icon-container">
-          <img src="{{ createLobbyIconSrc }}" alt="loader" width="80">
+          <img src="{{ createLobbyIconSrc }}" alt="create lobby" width="80">
         </div>
       </div>
 
@@ -18,7 +22,7 @@
         <span
           class="button-description">Для присоединения к лобби друзей достаточно знать ID.</span>
         <div class="icon-container">
-          <img src="{{ joinLobbyIconSrc }}" alt="loader" width="80">
+          <img src="{{ joinLobbyIconSrc }}" alt="join lobby" width="80">
         </div>
       </div>
     </div>

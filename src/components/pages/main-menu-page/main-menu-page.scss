@@ -41,6 +41,13 @@
   width: 100%;
 }
 
+.logout-button {
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 220px;
+}
+
 .menu-actions-container {
   $top-margin: 60px;
   $container-width: 1200px;

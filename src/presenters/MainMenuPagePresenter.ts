@@ -3,6 +3,7 @@ import ErrorHandler from 'model/error/ErrorHandler';
 import UnauthorizedError from 'model/error/UnauthorizedError';
 import SecurityContextStorage from 'model/storage/SecurityContextStorage';
 import Presenter from 'presenters/Presenter';
+import PageUtils from 'presenters/utils/PageUtils';
 import Router from 'router/Router';
 import RoutesEnum from 'router/RoutesEnum';
 
@@ -16,10 +17,17 @@ export default class MainMenuPagePresenter implements Presenter {
 
     this.pageComponent.render();
 
+    this.pageComponent.logoutButtonElement.onclick = () =>
+      MainMenuPagePresenter.handleLogoutButtonClick();
+
     this.pageComponent.createLobbyButtonElement.onclick = async () =>
       MainMenuPagePresenter.handleCreateLobbyButtonClick().catch(
         ErrorHandler.handleError
       );
+  }
+
+  private static handleLogoutButtonClick() {
+    PageUtils.logout();
   }
 
   private static async handleCreateLobbyButtonClick() {
