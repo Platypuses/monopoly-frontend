@@ -60,7 +60,8 @@ export default class RegistrationPagePresenter implements Presenter {
   ) {
     const nickname = pageComponent.nicknameFieldElement.value.trim();
     const password = pageComponent.passwordFieldElement.value.trim();
-    const passwordConfirmation = pageComponent.passwordConfirmationFieldElement.value.trim();
+    const passwordConfirmation =
+      pageComponent.passwordConfirmationFieldElement.value.trim();
 
     RegistrationRequestValidator.validate(
       nickname,
