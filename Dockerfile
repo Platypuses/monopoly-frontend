@@ -1,6 +1,7 @@
 FROM node:14-alpine as build-stage
 WORKDIR /usr/app-build
 COPY package.json ./
+COPY yarn.lock ./
 COPY tsconfig.json ./
 COPY webpack.common.js ./
 COPY webpack.prod.js ./
