@@ -6,7 +6,7 @@ import UnauthorizedError from 'model/error/UnauthorizedError';
 import SecurityContextStorage from 'model/storage/SecurityContextStorage';
 import MainMenuPagePresenter from 'presenters/MainMenuPagePresenter';
 import Presenter from 'presenters/Presenter';
-import PageArgsUtils from 'presenters/utils/PageArgsUtils';
+import PageUtils from 'presenters/utils/PageUtils';
 import Router from 'router/Router';
 import RoutesEnum from 'router/RoutesEnum';
 
@@ -24,7 +24,7 @@ export default class LobbyPagePresenter implements Presenter {
       throw new UnauthorizedError();
     }
 
-    const lobbyId = PageArgsUtils.extractId(args);
+    const lobbyId = PageUtils.extractIdFromArgs(args);
 
     if (lobbyId === null) {
       Router.goToRoute(RoutesEnum.MAIN_MENU);

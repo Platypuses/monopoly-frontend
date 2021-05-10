@@ -1,5 +1,4 @@
 import MainPageComponent from 'components/pages/main-page/MainPageComponent';
-import UnauthorizedError from 'model/error/UnauthorizedError';
 import SecurityContextStorage from 'model/storage/SecurityContextStorage';
 import Presenter from 'presenters/Presenter';
 import Router from 'router/Router';
@@ -17,7 +16,9 @@ export default class MainPagePresenter implements Presenter {
 
   private static async handlePlayButtonClick(): Promise<void> {
     if (SecurityContextStorage.isUserNotAuthorized()) {
-      throw new UnauthorizedError();
+      // TODO: Replace REGISTRATION with LOGIN
+      Router.goToRoute(RoutesEnum.REGISTRATION);
+      return;
     }
 
     Router.goToRoute(RoutesEnum.MAIN_MENU);
