@@ -19,8 +19,8 @@
 }
 
 .main-menu-page-monopoly-text {
-  $font-size: 10em;
-  $shadow-blur: .05em;
+  $font-size: 160px;
+  $shadow-blur: 8px;
   $shadow-color: #cbb97a;
 
   font-family: Algerian, sans-serif;
@@ -43,7 +43,7 @@
 
 .menu-actions-container {
   $top-margin: 60px;
-  $container-width: 75em;
+  $container-width: 1200px;
 
   align-items: flex-start;
   display: flex;
@@ -54,13 +54,14 @@
 }
 
 .menu-action {
+  $border-width: 3px;
   $border-color: #cbb97a;
-  $border-radius: 2.2em;
-  $element-height: 23.5em;
-  $element-width: 32em;
+  $border-radius: 35px;
+  $element-height: 375px;
+  $element-width: 512px;
 
   align-items: center;
-  border: 3px solid $border-color;
+  border: $border-width solid $border-color;
   border-radius: $border-radius;
   display: flex;
   flex-direction: column;
@@ -70,12 +71,12 @@
 }
 
 .action-button {
-  $border-radius: .8em;
-  $font-size: 1.8em;
-  $button-height: 2.05em;
-  $bottom-margin: 1.25em;
-  $top-margin: 1em;
-  $button-width: 9em;
+  $border-radius: 25px;
+  $font-size: 30px;
+  $button-height: 60px;
+  $bottom-margin: 35px;
+  $top-margin: 25px;
+  $button-width: 260px;
 
   border-radius: $border-radius;
   font-size: $font-size;
@@ -86,14 +87,14 @@
 }
 
 .button-description {
-  font-size: 1.5em;
+  font-size: 24px;
   text-align: center;
   width: 72%;
 }
 
 .icon-container {
-  $bottom-margin: 1em;
-  $right-margin: 3em;
+  $bottom-margin: 16px;
+  $right-margin: 50px;
 
   display: flex;
   flex-direction: row;

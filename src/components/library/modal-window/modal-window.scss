@@ -18,7 +18,7 @@
 }
 
 .modal-window-body {
-  $window-padding: 1em;
+  $window-padding: 16px;
 
   align-items: center;
   display: flex;
@@ -30,8 +30,8 @@
 .modal-window-content {
   $background-color: #efede0;
   $content-color: #000;
-  $max-content-width: 60em;
-  $content-padding: 2em;
+  $max-content-width: 1000px;
+  $content-padding: 32px;
 
   background-color: $background-color;
   color: $content-color;
