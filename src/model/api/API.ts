@@ -7,7 +7,7 @@ import SecurityContextStorage from 'model/storage/SecurityContextStorage';
 
 const backendBaseUrl =
   // @ts-ignore
-  window.env?.BACKEND_BASE_URL ?? 'http://monopoly-api.casper.by/api/v1';
+  window.env?.BACKEND_BASE_URL ?? 'https://monopoly-api.casper.by/api/v1';
 
 const API = axios.create({
   baseURL: backendBaseUrl,
