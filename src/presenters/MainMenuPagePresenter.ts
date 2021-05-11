@@ -24,6 +24,9 @@ export default class MainMenuPagePresenter implements Presenter {
       MainMenuPagePresenter.handleCreateLobbyButtonClick().catch(
         ErrorHandler.handleError
       );
+
+    this.pageComponent.openJoinLobbyWindowButtonElement.onclick = () =>
+      MainMenuPagePresenter.handleOpenJoinLobbyWindowButtonClick();
   }
 
   private static handleLogoutButtonClick() {
@@ -33,5 +36,9 @@ export default class MainMenuPagePresenter implements Presenter {
   private static async handleCreateLobbyButtonClick() {
     const lobbyId = 1; // TODO: get lobby id from API
     Router.goToRoute(RoutesEnum.LOBBY, [lobbyId.toString()]);
+  }
+
+  private static handleOpenJoinLobbyWindowButtonClick() {
+    Router.goToRoute(RoutesEnum.JOIN_LOBBY);
   }
 }

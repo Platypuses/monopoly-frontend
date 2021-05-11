@@ -14,10 +14,6 @@ export default class LobbyPageComponent extends BasePageComponent {
   private _exitLobbyButtonElement: HTMLButtonElement | null = null;
 
   render(): void {
-    this.renderPageContent();
-  }
-
-  private renderPageContent() {
     this._modalWindow = BasePageComponent.htmlStringToElement(
       lobbyPageTemplate({ loaderSrc })
     );

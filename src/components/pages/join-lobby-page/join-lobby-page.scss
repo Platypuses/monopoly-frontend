@@ -1,0 +1,53 @@
+.join-lobby-modal-window-content {
+  $border-radius: 35px;
+  $bottom-padding: 20px;
+  $window-width: 320px;
+
+  border-radius: $border-radius;
+  padding-bottom: $bottom-padding;
+  width: $window-width;
+}
+
+.join-lobby-page-content {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.enter-lobby-id-text {
+  font-size: 32px;
+  margin-bottom: 20px;
+  margin-top: 5px;
+}
+
+.lobby-id-hint {
+  $font-color: rgba(0, 0, 0, .4);
+  $font-size: 12px;
+  $bottom-padding: 2px;
+  $left-padding: 20px;
+
+  color: $font-color;
+  font-size: $font-size;
+  font-weight: bold;
+  margin-right: auto;
+  padding-bottom: $bottom-padding;
+  padding-left: $left-padding;
+}
+
+.lobby-id-field {
+  width: 280px;
+}
+
+.join-lobby-button {
+  $border-radius: 20px;
+  $font-size: 20px;
+  $left-right-padding: 45px;
+  $top-margin: 20px;
+  $bottom-padding: 2px;
+
+  border-radius: $border-radius;
+  font-size: $font-size;
+  margin-top: $top-margin;
+  padding: 0 $left-right-padding $bottom-padding;
+}
