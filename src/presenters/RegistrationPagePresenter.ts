@@ -2,6 +2,7 @@ import ModalWindowComponent from 'components/library/modal-window/ModalWindowCom
 import RegistrationPageComponent from 'components/pages/registration-page/RegistrationPageComponent';
 import AuthApi from 'model/api/AuthApi';
 import UserApi from 'model/api/UserApi';
+import WebSocketApi from 'model/api/WebSocketApi';
 import ErrorHandler from 'model/error/ErrorHandler';
 import RegistrationRequestValidator from 'model/validators/RegistrationRequestValidator';
 import MainPagePresenter from 'presenters/MainPagePresenter';
@@ -73,5 +74,6 @@ export default class RegistrationPagePresenter implements Presenter {
     await AuthApi.authUser({ nickname, password });
 
     Router.goToRoute(RoutesEnum.MAIN_MENU);
+    WebSocketApi.initWebSocket();
   }
 }

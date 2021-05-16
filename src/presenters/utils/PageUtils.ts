@@ -1,3 +1,4 @@
+import WebSocketApi from 'model/api/WebSocketApi';
 import SecurityContextStorage from 'model/storage/SecurityContextStorage';
 import Router from 'router/Router';
 import RoutesEnum from 'router/RoutesEnum';
@@ -19,6 +20,7 @@ export default {
 
   logout(): void {
     SecurityContextStorage.clear();
+    WebSocketApi.closeWebSocket();
     Router.goToRoute(RoutesEnum.LOGIN);
   },
 };

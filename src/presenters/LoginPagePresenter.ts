@@ -1,6 +1,7 @@
 import ModalWindowComponent from 'components/library/modal-window/ModalWindowComponent';
 import LoginPageComponent from 'components/pages/login-page/LoginPageComponent';
 import AuthApi from 'model/api/AuthApi';
+import WebSocketApi from 'model/api/WebSocketApi';
 import ErrorHandler from 'model/error/ErrorHandler';
 import MainPagePresenter from 'presenters/MainPagePresenter';
 import Presenter from 'presenters/Presenter';
@@ -61,5 +62,6 @@ export default class LoginPagePresenter implements Presenter {
     await AuthApi.authUser({ nickname, password });
 
     Router.goToRoute(RoutesEnum.MAIN_MENU);
+    WebSocketApi.initWebSocket();
   }
 }

@@ -1,5 +1,6 @@
 import 'components/common.scss';
 import AuthApi from 'model/api/AuthApi';
+import WebSocketApi from 'model/api/WebSocketApi';
 import ErrorHandler from 'model/error/ErrorHandler';
 import configureApplication from './configureApplication';
 
@@ -14,6 +15,7 @@ configureApplication();
 AuthApi.renewTokens()
   .then(() => {
     dispatchNewHashChangeEvent();
+    WebSocketApi.initWebSocket();
     setInterval(AuthApi.renewTokens, REFRESH_TOKENS_TIMEOUT);
   })
   .catch((e) => {
