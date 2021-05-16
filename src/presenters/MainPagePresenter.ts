@@ -16,8 +16,7 @@ export default class MainPagePresenter implements Presenter {
 
   private static async handlePlayButtonClick(): Promise<void> {
     if (SecurityContextStorage.isUserNotAuthorized()) {
-      // TODO: Replace REGISTRATION with LOGIN
-      Router.goToRoute(RoutesEnum.REGISTRATION);
+      Router.goToRoute(RoutesEnum.LOGIN);
       return;
     }
 

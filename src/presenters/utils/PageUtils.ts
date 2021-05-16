@@ -19,7 +19,6 @@ export default {
 
   logout(): void {
     SecurityContextStorage.clear();
-    // TODO: Replace REGISTRATION with LOGIN
-    Router.goToRoute(RoutesEnum.REGISTRATION);
+    Router.goToRoute(RoutesEnum.LOGIN);
   },
 };

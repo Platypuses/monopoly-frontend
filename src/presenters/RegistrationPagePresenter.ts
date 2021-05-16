@@ -52,7 +52,7 @@ export default class RegistrationPagePresenter implements Presenter {
 
   private static handleGoToLoginTextClick(modalWindow: HTMLElement) {
     ModalWindowComponent.closeWindow(modalWindow);
-    setTimeout(() => Router.goToRoute(RoutesEnum.MAIN), 300);
+    setTimeout(() => Router.goToRoute(RoutesEnum.LOGIN), 300);
   }
 
   private static async handleRegisterAccountButtonClick(

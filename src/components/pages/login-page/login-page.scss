@@ -1,0 +1,49 @@
+.login-modal-window-content {
+  border-radius: 40px;
+}
+
+.login-page-content {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-to-account-text {
+  font-size: 32px;
+  margin-top: 20px;
+}
+
+.login-nickname-field,
+.login-password-field {
+  width: 270px;
+}
+
+.login-nickname-field {
+  margin-top: 30px;
+}
+
+.login-password-field {
+  margin-top: 15px;
+}
+
+.go-to-registration-text {
+  cursor: pointer;
+  margin-top: 16px;
+}
+
+.create-it-text {
+  font-weight: bold;
+}
+
+.login-button {
+  $font-size: 20px;
+  $button-height: 40px;
+  $button-width: 150px;
+  $top-margin: 35px;
+
+  font-size: $font-size;
+  height: $button-height;
+  margin-top: $top-margin;
+  width: $button-width;
+}
