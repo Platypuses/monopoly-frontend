@@ -66,4 +66,8 @@ export default {
 
     window.location.hash = targetRoute;
   },
+
+  get currentRoute(): string {
+    return window.location.hash;
+  },
 };

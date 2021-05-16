@@ -2,24 +2,6 @@
   <div class="lobby-page-section lobby-participants-list-section">
     <span class="participants-text">Участники:</span>
     <div class="lobby-page-section-element lobby-participants-list">
-      <div class="lobby-participant-info lobby-creator-info">
-        <img src="{{ creatorIconSrc }}" alt="lobby creator">
-        <span class="participant-nickname-text creator-nickname-text">{{ participantsData.creatorNickname }}</span>
-      </div>
-
-      {{#each participantsData.nicknames}}
-        <div class="lobby-participant-info">
-          <img src="{{ ../participantIconSrc }}" alt="lobby participant">
-          <span class="participant-nickname-text">{{ this }}</span>
-        </div>
-      {{/each}}
-
-      {{#repeat participantsData.availablePositionsCount}}
-        <div class="lobby-participant-info">
-          <img src="{{ ../availablePositionIconSrc }}" alt="available position">
-          <span class="participant-nickname-text available-position-text">Свободное место</span>
-        </div>
-      {{/repeat}}
     </div>
   </div>
 

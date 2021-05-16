@@ -2,14 +2,19 @@ import availablePositionIconSrc from 'assets/images/lobby/available-position-ico
 import creatorIconSrc from 'assets/images/lobby/creator-icon.png';
 import participantIconSrc from 'assets/images/lobby/participant-icon.png';
 import LobbyInfoDto from 'model/dto/responses/LobbyInfoDto';
+import LobbyParticipantDto from 'model/dto/responses/LobbyParticipantDto';
 import lobbyWindowContentTemplate from './lobby-window-content.hbs';
+import lobbyParticipantsListTemplate from './lobby-participants-list.hbs';
 import './lobby-window-content.scss';
 
 const maxPlayersCount = 6;
 const windowBodyClass = 'modal-window-body';
+const participantsListClass = 'lobby-participants-list';
 const copyLobbyIdButtonClass = 'copy-lobby-id-button';
 const startGameButtonClass = 'start-game-button';
 const exitLobbyButtonClass = 'exit-lobby-button';
+
+let currentLobbyInfo: LobbyInfoDto | null = null;
 
 interface ParticipantsData {
   creatorNickname: string;
@@ -17,8 +22,9 @@ interface ParticipantsData {
   availablePositionsCount: number;
 }
 
-function buildParticipantsData(lobbyInfo: LobbyInfoDto): ParticipantsData {
-  const { lobbyParticipants } = lobbyInfo;
+function buildParticipantsData(
+  lobbyParticipants: LobbyParticipantDto[]
+): ParticipantsData {
   const availablePositionsCount = maxPlayersCount - lobbyParticipants.length;
 
   let creatorNickname = '';
@@ -41,18 +47,39 @@ function buildParticipantsData(lobbyInfo: LobbyInfoDto): ParticipantsData {
 
 export default {
   render(lobbyInfo: LobbyInfoDto): void {
+    currentLobbyInfo = lobbyInfo;
     const lobbyId = lobbyInfo.id;
-    const participantsData = buildParticipantsData(lobbyInfo);
 
     const windowBodyElement = <HTMLElement>(
       document.getElementsByClassName(windowBodyClass)[0]
     );
 
     windowBodyElement.innerHTML = lobbyWindowContentTemplate({
+      lobbyId,
+    });
+
+    this.renderParticipantsList(lobbyInfo.lobbyParticipants);
+  },
+
+  renderParticipantsList(lobbyParticipants: LobbyParticipantDto[]): void {
+    if (currentLobbyInfo === null) {
+      return;
+    }
+
+    currentLobbyInfo.lobbyParticipants = lobbyParticipants;
+    const participantsData = buildParticipantsData(lobbyParticipants);
+
+    const elements = document.getElementsByClassName(participantsListClass);
+
+    if (elements.length === 0) {
+      return;
+    }
+
+    const participantsListElement = elements[0];
+    participantsListElement.innerHTML = lobbyParticipantsListTemplate({
       creatorIconSrc,
       participantIconSrc,
       availablePositionIconSrc,
-      lobbyId,
       participantsData,
     });
   },
@@ -67,5 +94,9 @@ export default {
 
   get exitLobbyButtonClass(): string {
     return exitLobbyButtonClass;
+  },
+
+  get currentLobbyInfo(): LobbyInfoDto | null {
+    return currentLobbyInfo;
   },
 };
