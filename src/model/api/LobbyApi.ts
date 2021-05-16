@@ -1,46 +1,23 @@
+import API from 'model/api/API';
+import CreateLobbyDto from 'model/dto/responses/CreateLobbyDto';
 import LobbyInfoDto from 'model/dto/responses/LobbyInfoDto';
-import LobbyParticipantDto from 'model/dto/responses/LobbyParticipantDto';
-import LobbyStatus from 'model/dto/responses/LobbyStatus';
-import UnauthorizedError from 'model/error/UnauthorizedError';
-import SecurityContextStorage from 'model/storage/SecurityContextStorage';
-
-function buildLobbyParticipantsMock(): LobbyParticipantDto[] {
-  const { userInfo } = SecurityContextStorage;
-
-  if (userInfo === null) {
-    throw new UnauthorizedError();
-  }
-
-  return [
-    {
-      id: userInfo.id,
-      nickname: userInfo.nickname,
-      isCreator: true,
-    },
-    {
-      id: 1,
-      nickname: 'очень_длинный_ник',
-      isCreator: false,
-    },
-    {
-      id: 2,
-      nickname: 'QwertyTest',
-      isCreator: false,
-    },
-    {
-      id: 3,
-      nickname: 'Billy_Herrington',
-      isCreator: false,
-    },
-  ];
-}
 
 export default {
+  async createLobby(): Promise<CreateLobbyDto> {
+    const response = await API.post<CreateLobbyDto>('/lobbies');
+    return response.data;
+  },
+
+  async joinLobby(lobbyId: string): Promise<void> {
+    await API.post(`/lobbies/${lobbyId}/participants`);
+  },
+
   async getLobbyInfo(lobbyId: number): Promise<LobbyInfoDto> {
-    return {
-      id: lobbyId,
-      status: LobbyStatus.WAITING_FOR_PLAYERS,
-      lobbyParticipants: buildLobbyParticipantsMock(),
-    };
+    const response = await API.get<LobbyInfoDto>(`/lobbies/${lobbyId}`);
+    return response.data;
+  },
+
+  async exitLobby(): Promise<void> {
+    await API.delete('/lobbies/lobby-participant');
   },
 };

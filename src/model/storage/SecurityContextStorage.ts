@@ -1,8 +1,6 @@
 import TokensPairDto from 'model/dto/responses/TokensPairDto';
-import UserInfoDto from 'model/dto/responses/UserInfoDto';
 
 let savedAccessToken: string | null = null;
-let savedUserInfo: UserInfoDto | null = null;
 const refreshTokenStorageKey = 'refresh-token';
 
 export default {
@@ -14,10 +12,6 @@ export default {
     );
   },
 
-  saveUserInfo(userInfo: UserInfoDto): void {
-    savedUserInfo = userInfo;
-  },
-
   get accessToken(): string | null {
     return savedAccessToken;
   },
@@ -26,14 +20,9 @@ export default {
     return window.localStorage.getItem(refreshTokenStorageKey);
   },
 
-  get userInfo(): UserInfoDto | null {
-    return savedUserInfo;
-  },
-
   clear(): void {
     savedAccessToken = null;
     window.localStorage.removeItem(refreshTokenStorageKey);
-    savedUserInfo = null;
   },
 
   isUserNotAuthorized(): boolean {

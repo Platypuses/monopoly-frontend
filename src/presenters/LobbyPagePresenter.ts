@@ -39,8 +39,14 @@ export default class LobbyPagePresenter implements Presenter {
       100
     );
 
-    const lobbyInfo = await LobbyApi.getLobbyInfo(lobbyId);
-    this.pageComponent.displayLobbyInfo(lobbyInfo);
+    try {
+      const lobbyInfo = await LobbyApi.getLobbyInfo(lobbyId);
+      this.pageComponent.displayLobbyInfo(lobbyInfo);
+    } catch (e) {
+      ErrorHandler.handleError(e);
+      Router.goToRoute(RoutesEnum.MAIN_MENU);
+      return;
+    }
 
     this.initHandlers(lobbyId);
   }
@@ -65,7 +71,7 @@ export default class LobbyPagePresenter implements Presenter {
   private static async handleExitLobbyButtonClick(
     pageComponent: LobbyPageComponent
   ) {
-    // TODO: Add exit lobby API call
+    await LobbyApi.exitLobby();
     ModalWindowComponent.closeWindow(pageComponent.modalWindow);
     setTimeout(() => Router.goToRoute(RoutesEnum.MAIN_MENU), 300);
   }

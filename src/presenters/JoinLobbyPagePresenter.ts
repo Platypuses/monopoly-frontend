@@ -1,5 +1,6 @@
 import ModalWindowComponent from 'components/library/modal-window/ModalWindowComponent';
 import JoinLobbyPageComponent from 'components/pages/join-lobby-page/JoinLobbyPageComponent';
+import LobbyApi from 'model/api/LobbyApi';
 import ErrorHandler from 'model/error/ErrorHandler';
 import UnauthorizedError from 'model/error/UnauthorizedError';
 import SecurityContextStorage from 'model/storage/SecurityContextStorage';
@@ -60,8 +61,7 @@ export default class JoinLobbyPagePresenter implements Presenter {
   ) {
     const lobbyId = pageComponent.lobbyIdFieldElement.value.trim();
     JoinLobbyRequestValidator.validate(lobbyId);
-    // TODO: call API method
-
+    await LobbyApi.joinLobby(lobbyId);
     Router.goToRoute(RoutesEnum.LOBBY, [lobbyId]);
   }
 }

@@ -1,4 +1,5 @@
 import MainMenuPageComponent from 'components/pages/main-menu-page/MainMenuPageComponent';
+import LobbyApi from 'model/api/LobbyApi';
 import ErrorHandler from 'model/error/ErrorHandler';
 import UnauthorizedError from 'model/error/UnauthorizedError';
 import SecurityContextStorage from 'model/storage/SecurityContextStorage';
@@ -34,8 +35,8 @@ export default class MainMenuPagePresenter implements Presenter {
   }
 
   private static async handleCreateLobbyButtonClick() {
-    const lobbyId = 1; // TODO: get lobby id from API
-    Router.goToRoute(RoutesEnum.LOBBY, [lobbyId.toString()]);
+    const createLobbyDto = await LobbyApi.createLobby();
+    Router.goToRoute(RoutesEnum.LOBBY, [createLobbyDto.lobbyId.toString()]);
   }
 
   private static handleOpenJoinLobbyWindowButtonClick() {
