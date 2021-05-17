@@ -8,6 +8,10 @@ import GameStartEventHandler from 'model/event-handlers/game/GameStartEventHandl
 import MoveToCellEventHandler from 'model/event-handlers/game/MoveToCellEventHandler';
 import PlayerAcceptPurchaseOfferEventHandler from 'model/event-handlers/game/PlayerAcceptPurchaseOfferEventHandler';
 import PlayerBalanceChangeEventHandler from 'model/event-handlers/game/PlayerBalanceChangeEventHandler';
+import PlayerDeclinePurchaseEventHandler from 'model/event-handlers/game/PlayerDeclinePurchaseEventHandler';
+import PlayerOnChanceCellEventHandler from 'model/event-handlers/game/PlayerOnChanceCellEventHandler';
+import PlayerOnTaxCellEventHandler from 'model/event-handlers/game/PlayerOnTaxCellEventHandler';
+import PlayerOnVacantPropertyEventHandler from 'model/event-handlers/game/PlayerOnVacantPropertyEventHandler';
 import PlayerPurchaseOfferEventHandler from 'model/event-handlers/game/PlayerPurchaseOfferEventHandler';
 import RollDicesEventHandler from 'model/event-handlers/game/RollDicesEventHandler';
 import LobbyDissolveEventHandler from 'model/event-handlers/lobby/LobbyDissolveEventHandler';
@@ -52,6 +56,22 @@ eventHandlers.set(
 eventHandlers.set(
   WebSocketEventEnum.PLAYER_BALANCE_CHANGE,
   new PlayerBalanceChangeEventHandler()
+);
+eventHandlers.set(
+  WebSocketEventEnum.PLAYER_DECLINE_PURCHASE_OFFER,
+  new PlayerDeclinePurchaseEventHandler()
+);
+eventHandlers.set(
+  WebSocketEventEnum.PLAYER_ON_CHANCE_CELL,
+  new PlayerOnChanceCellEventHandler()
+);
+eventHandlers.set(
+  WebSocketEventEnum.PLAYER_ON_TAX_CELL,
+  new PlayerOnTaxCellEventHandler()
+);
+eventHandlers.set(
+  WebSocketEventEnum.PLAYER_ON_VACANT_PROPERTY,
+  new PlayerOnVacantPropertyEventHandler()
 );
 
 function onCloseCallback() {
