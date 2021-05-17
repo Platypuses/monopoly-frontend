@@ -25,7 +25,8 @@
   display: flex;
   flex-direction: row;
   height: 80px;
-  justify-content: center;
+  justify-content: flex-start;
+  margin-left: 200px;
   width: 100%;
 }
 
@@ -190,7 +191,7 @@
   width: 55px;
 }
 
-.price-text {
+.price-rent-text {
   font-weight: bold;
 }
 

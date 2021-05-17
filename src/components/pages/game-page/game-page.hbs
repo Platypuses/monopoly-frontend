@@ -1,312 +1,656 @@
 <div class="game-page-container">
   <div class="players-container">
-    <div class="player-info">
-      <div class="player-color-rectangle" style="background-color: red"></div>
-      <div class="nickname-balance-container">
-        <span class="player-nickname-text">Billy_Herrington</span>
-        <span class="player-balance-text">1500 $</span>
+    {{#each gamePageData.players}}
+      <div class="player-info">
+        <div class="player-color-rectangle" style="background-color: {{ this.color }}"></div>
+        <div class="nickname-balance-container">
+          <span class="player-nickname-text">{{ this.nickname }}</span>
+          <span class="player-balance-text">{{ this.balance }} $</span>
+        </div>
       </div>
-    </div>
-    <div class="player-info">
-      <div class="player-color-rectangle" style="background-color: yellow"></div>
-      <div class="nickname-balance-container">
-        <span class="player-nickname-text">Billy_Herrington</span>
-        <span class="player-balance-text">1500 $</span>
-      </div>
-    </div>
-    <div class="player-info">
-      <div class="player-color-rectangle" style="background-color: cyan"></div>
-      <div class="nickname-balance-container">
-        <span class="player-nickname-text">Billy_Herrington</span>
-        <span class="player-balance-text">1500 $</span>
-      </div>
-    </div>
-    <div class="player-info">
-      <div class="player-color-rectangle" style="background-color: blue"></div>
-      <div class="nickname-balance-container">
-        <span class="player-nickname-text">Billy_Herrington</span>
-        <span class="player-balance-text">1500 $</span>
-      </div>
-    </div>
-    <div class="player-info">
-      <div class="player-color-rectangle" style="background-color: orange"></div>
-      <div class="nickname-balance-container">
-        <span class="player-nickname-text">Billy_Herrington</span>
-        <span class="player-balance-text">1500 $</span>
-      </div>
-    </div>
-    <div class="player-info">
-      <div class="player-color-rectangle" style="background-color: lime"></div>
-      <div class="nickname-balance-container">
-        <span class="player-nickname-text">Billy_Herrington</span>
-        <span class="player-balance-text">1500 $</span>
-      </div>
-    </div>
+    {{/each}}
   </div>
+
   <div class="game-field-container">
     <div class="top-bottom-field-edge">
       <div class="cell corner-cell">
         <!-- start -->
-        <img src="{{ GameCells.n1 }}" alt="start" width="110px" height="110px">
+        <img src="{{ gamePageData.cells.n1.imageSrc }}" alt="start" width="110px" height="110px">
       </div>
-      <div class="cell not-corner-cell top-bottom-edge-not-corner-cell">
+
+      {{#with gamePageData.cells.n2}}
         <!-- CHANEL -->
-        <div class="top-edge-cell-price">
-          <span class="price-text">60 $</span>
+        <div class="cell not-corner-cell top-bottom-edge-not-corner-cell"
+          {{#if ownerColor}}
+             style="background-color: {{ ownerColor }}"
+          {{/if}}
+        >
+          <div class="top-edge-cell-price">
+            {{#if ownerColor}}
+              <span class="price-rent-text">{{ rent }} $</span>
+            {{/if}}
+
+            {{#unless ownerColor}}
+              <span class="price-rent-text">{{ price }} $</span>
+            {{/unless}}
+          </div>
+          <img src="{{ imageSrc }}" alt="start" width="40px">
         </div>
-        <img src="{{ GameCells.n2 }}" alt="start" width="40px">
-      </div>
+      {{/with}}
+
       <div class="cell not-corner-cell top-bottom-edge-not-corner-cell">
         <!-- chance -->
-        <img src="{{ GameCells.n3 }}" alt="start" width="40px">
+        <img src="{{ gamePageData.cells.n3.imageSrc }}" alt="start" width="40px">
       </div>
-      <div class="cell not-corner-cell top-bottom-edge-not-corner-cell">
+
+      {{#with gamePageData.cells.n4}}
         <!-- HUGO BOSS -->
-        <div class="top-edge-cell-price">
-          <span class="price-text">60 $</span>
+        <div class="cell not-corner-cell top-bottom-edge-not-corner-cell"
+          {{#if ownerColor}}
+             style="background-color: {{ ownerColor }}"
+          {{/if}}
+        >
+          <div class="top-edge-cell-price">
+            {{#if ownerColor}}
+              <span class="price-rent-text">{{ rent }} $</span>
+            {{/if}}
+
+            {{#unless ownerColor}}
+              <span class="price-rent-text">{{ price }} $</span>
+            {{/unless}}
+          </div>
+          <img src="{{ imageSrc }}" alt="start" width="30px">
         </div>
-        <img src="{{ GameCells.n4 }}" alt="start" width="30px">
-      </div>
+      {{/with}}
+
       <div class="cell not-corner-cell top-bottom-edge-not-corner-cell">
         <!-- tax -->
-        <img src="{{ GameCells.n5 }}" alt="start" width="50px">
+        <img src="{{ gamePageData.cells.n5.imageSrc }}" alt="start" width="50px">
       </div>
-      <div class="cell not-corner-cell top-bottom-edge-not-corner-cell">
+
+      {{#with gamePageData.cells.n6}}
         <!-- MERCEDES -->
-        <div class="top-edge-cell-price">
-          <span class="price-text">200 $</span>
+        <div class="cell not-corner-cell top-bottom-edge-not-corner-cell"
+          {{#if ownerColor}}
+             style="background-color: {{ ownerColor }}"
+          {{/if}}
+        >
+          <div class="top-edge-cell-price">
+            {{#if ownerColor}}
+              <span class="price-rent-text">{{ rent }} $</span>
+            {{/if}}
+
+            {{#unless ownerColor}}
+              <span class="price-rent-text">{{ price }} $</span>
+            {{/unless}}
+          </div>
+          <img src="{{ imageSrc }}" alt="start" width="40px">
         </div>
-        <img src="{{ GameCells.n6 }}" alt="start" width="40px">
-      </div>
-      <div class="cell not-corner-cell top-bottom-edge-not-corner-cell">
+      {{/with}}
+
+      {{#with gamePageData.cells.n7}}
         <!-- ADIDAS -->
-        <div class="top-edge-cell-price">
-          <span class="price-text">100 $</span>
+        <div class="cell not-corner-cell top-bottom-edge-not-corner-cell"
+          {{#if ownerColor}}
+             style="background-color: {{ ownerColor }}"
+          {{/if}}
+        >
+          <div class="top-edge-cell-price">
+            {{#if ownerColor}}
+              <span class="price-rent-text">{{ rent }} $</span>
+            {{/if}}
+
+            {{#unless ownerColor}}
+              <span class="price-rent-text">{{ price }} $</span>
+            {{/unless}}
+          </div>
+          <img src="{{ imageSrc }}" alt="start" width="40px">
         </div>
-        <img src="{{ GameCells.n7 }}" alt="start" width="40px">
-      </div>
+      {{/with}}
+
       <div class="cell not-corner-cell top-bottom-edge-not-corner-cell">
         <!-- chance -->
-        <img src="{{ GameCells.n8 }}" alt="start" width="40px">
+        <img src="{{ gamePageData.cells.n8.imageSrc }}" alt="start" width="40px">
       </div>
-      <div class="cell not-corner-cell top-bottom-edge-not-corner-cell">
+
+      {{#with gamePageData.cells.n9}}
         <!-- PUMA -->
-        <div class="top-edge-cell-price">
-          <span class="price-text">100 $</span>
+        <div class="cell not-corner-cell top-bottom-edge-not-corner-cell"
+          {{#if ownerColor}}
+             style="background-color: {{ ownerColor }}"
+          {{/if}}
+        >
+          <div class="top-edge-cell-price">
+            {{#if ownerColor}}
+              <span class="price-rent-text">{{ rent }} $</span>
+            {{/if}}
+
+            {{#unless ownerColor}}
+              <span class="price-rent-text">{{ price }} $</span>
+            {{/unless}}
+          </div>
+          <img src="{{ imageSrc }}" alt="start" width="40px">
         </div>
-        <img src="{{ GameCells.n9 }}" alt="start" width="40px">
-      </div>
-      <div class="cell not-corner-cell top-bottom-edge-not-corner-cell">
+      {{/with}}
+
+      {{#with gamePageData.cells.n10}}
         <!-- LACOSTE -->
-        <div class="top-edge-cell-price">
-          <span class="price-text">120 $</span>
+        <div class="cell not-corner-cell top-bottom-edge-not-corner-cell"
+          {{#if ownerColor}}
+             style="background-color: {{ ownerColor }}"
+          {{/if}}
+        >
+          <div class="top-edge-cell-price">
+            {{#if ownerColor}}
+              <span class="price-rent-text">{{ rent }} $</span>
+            {{/if}}
+
+            {{#unless ownerColor}}
+              <span class="price-rent-text">{{ price }} $</span>
+            {{/unless}}
+          </div>
+          <img src="{{ imageSrc }}" alt="start" width="35px">
         </div>
-        <img src="{{ GameCells.n10 }}" alt="start" width="35px">
-      </div>
+      {{/with}}
+
       <div class="cell corner-cell empty-corner-cell">
       </div>
     </div>
+
     <div class="left-right-field-edge">
       <div class="left-right-field-edge-row">
-        <div class="cell not-corner-cell left-right-edge-not-corner-cell">
+        {{#with gamePageData.cells.n40}}
           <!-- NOKIA -->
-          <img src="{{ GameCells.n40 }}" alt="start" width="80px">
-          <div class="left-edge-cell-price">
-            <span class="price-text">400 $</span>
+          <div class="cell not-corner-cell left-right-edge-not-corner-cell"
+            {{#if ownerColor}}
+               style="background-color: {{ ownerColor }}"
+            {{/if}}
+          >
+            <img src="{{ imageSrc }}" alt="start" width="80px">
+            <div class="left-edge-cell-price">
+              {{#if ownerColor}}
+                <span class="price-rent-text">{{ rent }} $</span>
+              {{/if}}
+
+              {{#unless ownerColor}}
+                <span class="price-rent-text">{{ price }} $</span>
+              {{/unless}}
+            </div>
           </div>
-        </div>
-        <div class="cell not-corner-cell left-right-edge-not-corner-cell">
+        {{/with}}
+
+        {{#with gamePageData.cells.n12}}
           <!-- VK -->
-          <img src="{{ GameCells.n12 }}" alt="start" width="70px">
-          <div class="right-edge-cell-price">
-            <span class="price-text">140 $</span>
+          <div class="cell not-corner-cell left-right-edge-not-corner-cell"
+            {{#if ownerColor}}
+               style="background-color: {{ ownerColor }}"
+            {{/if}}
+          >
+            <img src="{{ imageSrc }}" alt="start" width="70px">
+            <div class="right-edge-cell-price">
+              {{#if ownerColor}}
+                <span class="price-rent-text">{{ rent }} $</span>
+              {{/if}}
+
+              {{#unless ownerColor}}
+                <span class="price-rent-text">{{ price }} $</span>
+              {{/unless}}
+            </div>
           </div>
-        </div>
+        {{/with}}
       </div>
+
       <div class="left-right-field-edge-row">
         <div class="cell not-corner-cell left-right-edge-not-corner-cell">
           <!-- chance -->
-          <img src="{{ GameCells.n39 }}" alt="start" width="60px">
+          <img src="{{ gamePageData.cells.n39.imageSrc }}" alt="start" width="60px">
         </div>
-        <div class="cell not-corner-cell left-right-edge-not-corner-cell">
+
+        {{#with gamePageData.cells.n13}}
           <!-- ROCKSTAR GAMES -->
-          <img src="{{ GameCells.n13 }}" alt="start" width="40px">
-          <div class="right-edge-cell-price">
-            <span class="price-text">150 $</span>
+          <div class="cell not-corner-cell left-right-edge-not-corner-cell"
+            {{#if ownerColor}}
+               style="background-color: {{ ownerColor }}"
+            {{/if}}
+          >
+            <img src="{{ imageSrc }}" alt="start" width="40px">
+            <div class="right-edge-cell-price">
+              {{#if ownerColor}}
+                <span class="price-rent-text">{{ rent }} $</span>
+              {{/if}}
+
+              {{#unless ownerColor}}
+                <span class="price-rent-text">{{ price }} $</span>
+              {{/unless}}
+            </div>
           </div>
-        </div>
+        {{/with}}
       </div>
+
       <div class="left-right-field-edge-row">
-        <div class="cell not-corner-cell left-right-edge-not-corner-cell">
+        {{#with gamePageData.cells.n38}}
           <!-- APPLE -->
-          <img src="{{ GameCells.n38 }}" alt="start" width="35px">
-          <div class="left-edge-cell-price">
-            <span class="price-text">350 $</span>
+          <div class="cell not-corner-cell left-right-edge-not-corner-cell"
+            {{#if ownerColor}}
+               style="background-color: {{ ownerColor }}"
+            {{/if}}
+          >
+            <img src="{{ imageSrc }}" alt="start" width="35px">
+            <div class="left-edge-cell-price">
+              {{#if ownerColor}}
+                <span class="price-rent-text">{{ rent }} $</span>
+              {{/if}}
+
+              {{#unless ownerColor}}
+                <span class="price-rent-text">{{ price }} $</span>
+              {{/unless}}
+            </div>
           </div>
-        </div>
-        <div class="cell not-corner-cell left-right-edge-not-corner-cell">
+        {{/with}}
+
+        {{#with gamePageData.cells.n14}}
           <!-- FACEBOOK -->
-          <img src="{{ GameCells.n14 }}" alt="start" width="80px">
-          <div class="right-edge-cell-price">
-            <span class="price-text">140 $</span>
+          <div class="cell not-corner-cell left-right-edge-not-corner-cell"
+            {{#if ownerColor}}
+               style="background-color: {{ ownerColor }}"
+            {{/if}}
+          >
+            <img src="{{ imageSrc }}" alt="start" width="80px">
+            <div class="right-edge-cell-price">
+              {{#if ownerColor}}
+                <span class="price-rent-text">{{ rent }} $</span>
+              {{/if}}
+
+              {{#unless ownerColor}}
+                <span class="price-rent-text">{{ price }} $</span>
+              {{/unless}}
+            </div>
           </div>
-        </div>
+        {{/with}}
       </div>
+
       <div class="left-right-field-edge-row">
         <div class="cell not-corner-cell left-right-edge-not-corner-cell">
           <!-- tax -->
-          <img src="{{ GameCells.n37 }}" alt="start" width="50px">
+          <img src="{{ gamePageData.cells.n37.imageSrc }}" alt="start" width="50px">
         </div>
-        <div class="cell not-corner-cell left-right-edge-not-corner-cell">
+
+        {{#with gamePageData.cells.n15}}
           <!-- TWITTER -->
-          <img src="{{ GameCells.n15 }}" alt="start" width="50px">
-          <div class="right-edge-cell-price">
-            <span class="price-text">160 $</span>
+          <div class="cell not-corner-cell left-right-edge-not-corner-cell"
+            {{#if ownerColor}}
+               style="background-color: {{ ownerColor }}"
+            {{/if}}
+          >
+            <img src="{{ imageSrc }}" alt="start" width="50px">
+            <div class="right-edge-cell-price">
+              {{#if ownerColor}}
+                <span class="price-rent-text">{{ rent }} $</span>
+              {{/if}}
+
+              {{#unless ownerColor}}
+                <span class="price-rent-text">{{ price }} $</span>
+              {{/unless}}
+            </div>
           </div>
-        </div>
+        {{/with}}
       </div>
+
       <div class="left-right-field-edge-row">
-        <div class="cell not-corner-cell left-right-edge-not-corner-cell">
+        {{#with gamePageData.cells.n36}}
           <!-- LAND ROVER -->
-          <img src="{{ GameCells.n36 }}" alt="start" width="70px">
-          <div class="left-edge-cell-price">
-            <span class="price-text">200 $</span>
+          <div class="cell not-corner-cell left-right-edge-not-corner-cell"
+            {{#if ownerColor}}
+               style="background-color: {{ ownerColor }}"
+            {{/if}}
+          >
+            <img src="{{ imageSrc }}" alt="start" width="70px">
+            <div class="left-edge-cell-price">
+              {{#if ownerColor}}
+                <span class="price-rent-text">{{ rent }} $</span>
+              {{/if}}
+
+              {{#unless ownerColor}}
+                <span class="price-rent-text">{{ price }} $</span>
+              {{/unless}}
+            </div>
           </div>
-        </div>
-        <div class="cell not-corner-cell left-right-edge-not-corner-cell">
+        {{/with}}
+
+        {{#with gamePageData.cells.n16}}
           <!-- AUDI -->
-          <img src="{{ GameCells.n16 }}" alt="start" width="80px">
-          <div class="right-edge-cell-price">
-            <span class="price-text">200 $</span>
+          <div class="cell not-corner-cell left-right-edge-not-corner-cell"
+            {{#if ownerColor}}
+               style="background-color: {{ ownerColor }}"
+            {{/if}}
+          >
+            <img src="{{ imageSrc }}" alt="start" width="80px">
+            <div class="right-edge-cell-price">
+              {{#if ownerColor}}
+                <span class="price-rent-text">{{ rent }} $</span>
+              {{/if}}
+
+              {{#unless ownerColor}}
+                <span class="price-rent-text">{{ price }} $</span>
+              {{/unless}}
+            </div>
           </div>
-        </div>
+        {{/with}}
       </div>
+
       <div class="left-right-field-edge-row">
-        <div class="cell not-corner-cell left-right-edge-not-corner-cell">
+        {{#with gamePageData.cells.n35}}
           <!-- NOVOTEL -->
-          <img src="{{ GameCells.n35 }}" alt="start" width="80px">
-          <div class="left-edge-cell-price">
-            <span class="price-text">320 $</span>
+          <div class="cell not-corner-cell left-right-edge-not-corner-cell"
+            {{#if ownerColor}}
+               style="background-color: {{ ownerColor }}"
+            {{/if}}
+          >
+            <img src="{{ imageSrc }}" alt="start" width="80px">
+            <div class="left-edge-cell-price">
+              {{#if ownerColor}}
+                <span class="price-rent-text">{{ rent }} $</span>
+              {{/if}}
+
+              {{#unless ownerColor}}
+                <span class="price-rent-text">{{ price }} $</span>
+              {{/unless}}
+            </div>
           </div>
-        </div>
-        <div class="cell not-corner-cell left-right-edge-not-corner-cell">
+        {{/with}}
+
+        {{#with gamePageData.cells.n17}}
           <!-- COCA-COLA -->
-          <img src="{{ GameCells.n17 }}" alt="start" width="80px">
-          <div class="right-edge-cell-price">
-            <span class="price-text">180 $</span>
+          <div class="cell not-corner-cell left-right-edge-not-corner-cell"
+            {{#if ownerColor}}
+               style="background-color: {{ ownerColor }}"
+            {{/if}}
+          >
+            <img src="{{ imageSrc }}" alt="start" width="80px">
+            <div class="right-edge-cell-price">
+              {{#if ownerColor}}
+                <span class="price-rent-text">{{ rent }} $</span>
+              {{/if}}
+
+              {{#unless ownerColor}}
+                <span class="price-rent-text">{{ price }} $</span>
+              {{/unless}}
+            </div>
           </div>
-        </div>
+        {{/with}}
       </div>
+
       <div class="left-right-field-edge-row">
         <div class="cell not-corner-cell left-right-edge-not-corner-cell">
           <!-- chance -->
-          <img src="{{ GameCells.n34 }}" alt="start" width="60px">
+          <img src="{{ gamePageData.cells.n34.imageSrc }}" alt="start" width="60px">
         </div>
+
         <div class="cell not-corner-cell left-right-edge-not-corner-cell">
           <!-- chance -->
-          <img src="{{ GameCells.n18 }}" alt="start" width="60px">
+          <img src="{{ gamePageData.cells.n18.imageSrc }}" alt="start" width="60px">
         </div>
       </div>
+
       <div class="left-right-field-edge-row">
-        <div class="cell not-corner-cell left-right-edge-not-corner-cell">
+        {{#with gamePageData.cells.n33}}
           <!-- RADISSON BLU -->
-          <img src="{{ GameCells.n33 }}" alt="start" width="80px">
-          <div class="left-edge-cell-price">
-            <span class="price-text">300 $</span>
+          <div class="cell not-corner-cell left-right-edge-not-corner-cell"
+            {{#if ownerColor}}
+               style="background-color: {{ ownerColor }}"
+            {{/if}}
+          >
+            <img src="{{ imageSrc }}" alt="start" width="80px">
+            <div class="left-edge-cell-price">
+              {{#if ownerColor}}
+                <span class="price-rent-text">{{ rent }} $</span>
+              {{/if}}
+
+              {{#unless ownerColor}}
+                <span class="price-rent-text">{{ price }} $</span>
+              {{/unless}}
+            </div>
           </div>
-        </div>
-        <div class="cell not-corner-cell left-right-edge-not-corner-cell">
+        {{/with}}
+
+        {{#with gamePageData.cells.n19}}
           <!-- PEPSI -->
-          <img src="{{ GameCells.n19 }}" alt="start" width="80px">
-          <div class="right-edge-cell-price">
-            <span class="price-text">180 $</span>
+          <div class="cell not-corner-cell left-right-edge-not-corner-cell"
+            {{#if ownerColor}}
+               style="background-color: {{ ownerColor }}"
+            {{/if}}
+          >
+            <img src="{{ imageSrc }}" alt="start" width="80px">
+            <div class="right-edge-cell-price">
+              {{#if ownerColor}}
+                <span class="price-rent-text">{{ rent }} $</span>
+              {{/if}}
+
+              {{#unless ownerColor}}
+                <span class="price-rent-text">{{ price }} $</span>
+              {{/unless}}
+            </div>
           </div>
-        </div>
+        {{/with}}
       </div>
+
       <div class="left-right-field-edge-row">
-        <div class="cell not-corner-cell left-right-edge-not-corner-cell">
+        {{#with gamePageData.cells.n32}}
           <!-- HOLIDAY INN -->
-          <img src="{{ GameCells.n32 }}" alt="start" width="55px">
-          <div class="left-edge-cell-price">
-            <span class="price-text">300 $</span>
+          <div class="cell not-corner-cell left-right-edge-not-corner-cell"
+            {{#if ownerColor}}
+               style="background-color: {{ ownerColor }}"
+            {{/if}}
+          >
+            <img src="{{ imageSrc }}" alt="start" width="55px">
+            <div class="left-edge-cell-price">
+              {{#if ownerColor}}
+                <span class="price-rent-text">{{ rent }} $</span>
+              {{/if}}
+
+              {{#unless ownerColor}}
+                <span class="price-rent-text">{{ price }} $</span>
+              {{/unless}}
+            </div>
           </div>
-        </div>
-        <div class="cell not-corner-cell left-right-edge-not-corner-cell">
+        {{/with}}
+
+        {{#with gamePageData.cells.n20}}
           <!-- FANTA -->
-          <img src="{{ GameCells.n20 }}" alt="start" width="50px">
-          <div class="right-edge-cell-price">
-            <span class="price-text">200 $</span>
+          <div class="cell not-corner-cell left-right-edge-not-corner-cell"
+            {{#if ownerColor}}
+               style="background-color: {{ ownerColor }}"
+            {{/if}}
+          >
+            <img src="{{ imageSrc }}" alt="start" width="50px">
+            <div class="right-edge-cell-price">
+              {{#if ownerColor}}
+                <span class="price-rent-text">{{ rent }} $</span>
+              {{/if}}
+
+              {{#unless ownerColor}}
+                <span class="price-rent-text">{{ price }} $</span>
+              {{/unless}}
+            </div>
           </div>
-        </div>
+        {{/with}}
       </div>
     </div>
+
     <div class="top-bottom-field-edge">
       <div class="cell corner-cell empty-corner-cell">
       </div>
-      <div class="cell not-corner-cell top-bottom-edge-not-corner-cell">
+
+      {{#with gamePageData.cells.n30}}
         <!-- KFC -->
-        <img src="{{ GameCells.n30 }}" alt="start" width="40px">
-        <div class="bottom-edge-cell-price">
-          <span class="price-text">280 $</span>
+        <div class="cell not-corner-cell top-bottom-edge-not-corner-cell"
+          {{#if ownerColor}}
+             style="background-color: {{ ownerColor }}"
+          {{/if}}
+        >
+          <div class="bottom-edge-cell-price">
+            {{#if ownerColor}}
+              <span class="price-rent-text">{{ rent }} $</span>
+            {{/if}}
+
+            {{#unless ownerColor}}
+              <span class="price-rent-text">{{ price }} $</span>
+            {{/unless}}
+          </div>
+          <img src="{{ imageSrc }}" alt="start" width="40px">
         </div>
-      </div>
-      <div class="cell not-corner-cell top-bottom-edge-not-corner-cell">
+      {{/with}}
+
+      {{#with gamePageData.cells.n29}}
         <!-- ROVIO -->
-        <img src="{{ GameCells.n29 }}" alt="start" width="20px">
-        <div class="bottom-edge-cell-price">
-          <span class="price-text">150 $</span>
+        <div class="cell not-corner-cell top-bottom-edge-not-corner-cell"
+          {{#if ownerColor}}
+             style="background-color: {{ ownerColor }}"
+          {{/if}}
+        >
+          <div class="bottom-edge-cell-price">
+            {{#if ownerColor}}
+              <span class="price-rent-text">{{ rent }} $</span>
+            {{/if}}
+
+            {{#unless ownerColor}}
+              <span class="price-rent-text">{{ price }} $</span>
+            {{/unless}}
+          </div>
+          <img src="{{ imageSrc }}" alt="start" width="20px">
         </div>
-      </div>
-      <div class="cell not-corner-cell top-bottom-edge-not-corner-cell">
+      {{/with}}
+
+      {{#with gamePageData.cells.n28}}
         <!-- BURGER KING -->
-        <img src="{{ GameCells.n28 }}" alt="start" width="40px">
-        <div class="bottom-edge-cell-price">
-          <span class="price-text">260 $</span>
+        <div class="cell not-corner-cell top-bottom-edge-not-corner-cell"
+          {{#if ownerColor}}
+             style="background-color: {{ ownerColor }}"
+          {{/if}}
+        >
+          <div class="bottom-edge-cell-price">
+            {{#if ownerColor}}
+              <span class="price-rent-text">{{ rent }} $</span>
+            {{/if}}
+
+            {{#unless ownerColor}}
+              <span class="price-rent-text">{{ price }} $</span>
+            {{/unless}}
+          </div>
+          <img src="{{ imageSrc }}" alt="start" width="40px">
         </div>
-      </div>
-      <div class="cell not-corner-cell top-bottom-edge-not-corner-cell">
+      {{/with}}
+
+      {{#with gamePageData.cells.n27}}
         <!-- MCDONALDS -->
-        <img src="{{ GameCells.n27 }}" alt="start" width="40px">
-        <div class="bottom-edge-cell-price">
-          <span class="price-text">260 $</span>
+        <div class="cell not-corner-cell top-bottom-edge-not-corner-cell"
+          {{#if ownerColor}}
+             style="background-color: {{ ownerColor }}"
+          {{/if}}
+        >
+          <div class="bottom-edge-cell-price">
+            {{#if ownerColor}}
+              <span class="price-rent-text">{{ rent }} $</span>
+            {{/if}}
+
+            {{#unless ownerColor}}
+              <span class="price-rent-text">{{ price }} $</span>
+            {{/unless}}
+          </div>
+          <img src="{{ imageSrc }}" alt="start" width="40px">
         </div>
-      </div>
-      <div class="cell not-corner-cell top-bottom-edge-not-corner-cell">
+      {{/with}}
+
+      {{#with gamePageData.cells.n26}}
         <!-- FORD -->
-        <img src="{{ GameCells.n26 }}" alt="start" width="30px">
-        <div class="bottom-edge-cell-price">
-          <span class="price-text">200 $</span>
+        <div class="cell not-corner-cell top-bottom-edge-not-corner-cell"
+          {{#if ownerColor}}
+             style="background-color: {{ ownerColor }}"
+          {{/if}}
+        >
+          <div class="bottom-edge-cell-price">
+            {{#if ownerColor}}
+              <span class="price-rent-text">{{ rent }} $</span>
+            {{/if}}
+
+            {{#unless ownerColor}}
+              <span class="price-rent-text">{{ price }} $</span>
+            {{/unless}}
+          </div>
+          <img src="{{ imageSrc }}" alt="start" width="30px">
         </div>
-      </div>
-      <div class="cell not-corner-cell top-bottom-edge-not-corner-cell">
+      {{/with}}
+
+      {{#with gamePageData.cells.n25}}
         <!-- BRITISH AIRWAYS -->
-        <img src="{{ GameCells.n25 }}" alt="start" width="13px">
-        <div class="bottom-edge-cell-price">
-          <span class="price-text">240 $</span>
+        <div class="cell not-corner-cell top-bottom-edge-not-corner-cell"
+          {{#if ownerColor}}
+             style="background-color: {{ ownerColor }}"
+          {{/if}}
+        >
+          <div class="bottom-edge-cell-price">
+            {{#if ownerColor}}
+              <span class="price-rent-text">{{ rent }} $</span>
+            {{/if}}
+
+            {{#unless ownerColor}}
+              <span class="price-rent-text">{{ price }} $</span>
+            {{/unless}}
+          </div>
+          <img src="{{ imageSrc }}" alt="start" width="13px">
         </div>
-      </div>
-      <div class="cell not-corner-cell top-bottom-edge-not-corner-cell">
+      {{/with}}
+
+      {{#with gamePageData.cells.n24}}
         <!-- LUFTHANSA -->
-        <img src="{{ GameCells.n24 }}" alt="start" width="15px">
-        <div class="bottom-edge-cell-price">
-          <span class="price-text">220 $</span>
+        <div class="cell not-corner-cell top-bottom-edge-not-corner-cell"
+          {{#if ownerColor}}
+             style="background-color: {{ ownerColor }}"
+          {{/if}}
+        >
+          <div class="bottom-edge-cell-price">
+            {{#if ownerColor}}
+              <span class="price-rent-text">{{ rent }} $</span>
+            {{/if}}
+
+            {{#unless ownerColor}}
+              <span class="price-rent-text">{{ price }} $</span>
+            {{/unless}}
+          </div>
+          <img src="{{ imageSrc }}" alt="start" width="15px">
         </div>
-      </div>
+      {{/with}}
+
       <div class="cell not-corner-cell top-bottom-edge-not-corner-cell">
         <!-- chance -->
-        <img src="{{ GameCells.n23 }}" alt="start" width="40px">
+        <img src="{{ gamePageData.cells.n23.imageSrc }}" alt="start" width="40px">
       </div>
-      <div class="cell not-corner-cell top-bottom-edge-not-corner-cell">
+
+      {{#with gamePageData.cells.n22}}
         <!-- AMERICAN AIRLINES -->
-        <img src="{{ GameCells.n22 }}" alt="start" width="13px">
-        <div class="bottom-edge-cell-price">
-          <span class="price-text">220 $</span>
+        <div class="cell not-corner-cell top-bottom-edge-not-corner-cell"
+          {{#if ownerColor}}
+             style="background-color: {{ ownerColor }}"
+          {{/if}}
+        >
+          <div class="bottom-edge-cell-price">
+            {{#if ownerColor}}
+              <span class="price-rent-text">{{ rent }} $</span>
+            {{/if}}
+
+            {{#unless ownerColor}}
+              <span class="price-rent-text">{{ price }} $</span>
+            {{/unless}}
+          </div>
+          <img src="{{ imageSrc }}" alt="start" width="13px">
         </div>
-      </div>
+      {{/with}}
+
       <div class="cell corner-cell empty-corner-cell">
       </div>
     </div>
   </div>
+
   <div class="game-log-container">
     <div class="game-log-content">
       <div class="log-message">
@@ -488,9 +832,8 @@
   </div>
 </div>
 
-<div class="player-icon-circle" style="background-color: red; left: 600px; top: 100px"></div>
-<div class="player-icon-circle" style="background-color: yellow; left: 630px; top: 100px"></div>
-<div class="player-icon-circle" style="background-color: cyan; left: 600px; top: 135px"></div>
-<div class="player-icon-circle" style="background-color: blue; left: 630px; top: 135px"></div>
-<div class="player-icon-circle" style="background-color: orange; left: 600px; top: 170px"></div>
-<div class="player-icon-circle" style="background-color: lime; left: 630px; top: 170px"></div>
+
+{{#each gamePageData.players}}
+  <div class="player-icon-circle"
+       style="background-color: {{ this.color }}; top: {{ this.playerPosition.top }}px; left: {{ this.playerPosition.left }}px"></div>
+{{/each}}
