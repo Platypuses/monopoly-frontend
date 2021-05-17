@@ -1,5 +1,5 @@
 import ModalWindowComponent from 'components/library/modal-window/ModalWindowComponent';
-import GameStartEventPayload from 'model/dto/responses/ws/GameStartEventPayload';
+import GameStartEventPayload from 'model/dto/responses/ws/payload/game/GameStartEventPayload';
 import WebSocketPayloadDto from 'model/dto/responses/ws/WebSocketPayloadDto';
 import EventHandler from 'model/event-handlers/EventHandler';
 import Router from 'router/Router';

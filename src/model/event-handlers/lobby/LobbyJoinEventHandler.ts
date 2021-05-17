@@ -1,6 +1,6 @@
 import LobbyWindowContent from 'components/library/lobby-window-content/LobbyWindowContent';
 import LobbyParticipantDto from 'model/dto/responses/LobbyParticipantDto';
-import LobbyJoinLeaveEventPayload from 'model/dto/responses/ws/LobbyJoinLeaveEventPayload';
+import LobbyJoinLeaveEventPayload from 'model/dto/responses/ws/payload/lobby/LobbyJoinLeaveEventPayload';
 import WebSocketPayloadDto from 'model/dto/responses/ws/WebSocketPayloadDto';
 import EventHandler from 'model/event-handlers/EventHandler';
 

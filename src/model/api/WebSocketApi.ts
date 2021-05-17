@@ -3,10 +3,16 @@
 import WebSocketEventEnum from 'model/dto/responses/ws/WebSocketEventEnum';
 import WebSocketPayloadDto from 'model/dto/responses/ws/WebSocketPayloadDto';
 import EventHandler from 'model/event-handlers/EventHandler';
-import GameStartEventHandler from 'model/event-handlers/GameStartEventHandler';
-import LobbyDissolveEventHandler from 'model/event-handlers/LobbyDissolveEventHandler';
-import LobbyJoinEventHandler from 'model/event-handlers/LobbyJoinEventHandler';
-import LobbyLeaveEventHandler from 'model/event-handlers/LobbyLeaveEventHandler';
+import CurrentMovePlayerChangeEventHandler from 'model/event-handlers/game/CurrentMovePlayerChangeEventHandler';
+import GameStartEventHandler from 'model/event-handlers/game/GameStartEventHandler';
+import MoveToCellEventHandler from 'model/event-handlers/game/MoveToCellEventHandler';
+import PlayerAcceptPurchaseOfferEventHandler from 'model/event-handlers/game/PlayerAcceptPurchaseOfferEventHandler';
+import PlayerBalanceChangeEventHandler from 'model/event-handlers/game/PlayerBalanceChangeEventHandler';
+import PlayerPurchaseOfferEventHandler from 'model/event-handlers/game/PlayerPurchaseOfferEventHandler';
+import RollDicesEventHandler from 'model/event-handlers/game/RollDicesEventHandler';
+import LobbyDissolveEventHandler from 'model/event-handlers/lobby/LobbyDissolveEventHandler';
+import LobbyJoinEventHandler from 'model/event-handlers/lobby/LobbyJoinEventHandler';
+import LobbyLeaveEventHandler from 'model/event-handlers/lobby/LobbyLeaveEventHandler';
 import SecurityContextStorage from 'model/storage/SecurityContextStorage';
 
 const backendWebSocketBaseUrl =
@@ -25,6 +31,27 @@ eventHandlers.set(
 eventHandlers.set(
   WebSocketEventEnum.START_OF_THE_GAME,
   new GameStartEventHandler()
+);
+eventHandlers.set(
+  WebSocketEventEnum.CURRENT_MOVE_PLAYER_CHANGE,
+  new CurrentMovePlayerChangeEventHandler()
+);
+eventHandlers.set(WebSocketEventEnum.ROLL_DICES, new RollDicesEventHandler());
+eventHandlers.set(
+  WebSocketEventEnum.MOVE_TO_CELL,
+  new MoveToCellEventHandler()
+);
+eventHandlers.set(
+  WebSocketEventEnum.PROPERTY_PURCHASE_OFFER,
+  new PlayerPurchaseOfferEventHandler()
+);
+eventHandlers.set(
+  WebSocketEventEnum.PLAYER_ACCEPT_PURCHASE_OFFER,
+  new PlayerAcceptPurchaseOfferEventHandler()
+);
+eventHandlers.set(
+  WebSocketEventEnum.PLAYER_BALANCE_CHANGE,
+  new PlayerBalanceChangeEventHandler()
 );
 
 function onCloseCallback() {

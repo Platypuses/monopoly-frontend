@@ -3,4 +3,5 @@ export default interface CellData {
   price: number;
   rent: number;
   ownerColor: string | null;
+  name: string | null;
 }

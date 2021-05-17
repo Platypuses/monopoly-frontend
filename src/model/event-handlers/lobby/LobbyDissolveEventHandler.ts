@@ -1,5 +1,5 @@
 import ModalWindowComponent from 'components/library/modal-window/ModalWindowComponent';
-import LobbyDissolveEventPayload from 'model/dto/responses/ws/LobbyDissolveEventPayload';
+import LobbyDissolveEventPayload from 'model/dto/responses/ws/payload/lobby/LobbyDissolveEventPayload';
 import WebSocketPayloadDto from 'model/dto/responses/ws/WebSocketPayloadDto';
 import EventHandler from 'model/event-handlers/EventHandler';
 import Router from 'router/Router';
