@@ -1,6 +1,8 @@
+import GameLogComponent from 'components/pages/game-page/GameLogComponent';
 import CurrentMovePlayerChangeEventPayload from 'model/dto/responses/ws/payload/game/CurrentMovePlayerChangeEventPayload';
 import WebSocketPayloadDto from 'model/dto/responses/ws/WebSocketPayloadDto';
 import EventHandler from 'model/event-handlers/EventHandler';
+import GameStateStorage from 'model/storage/GameStateStorage';
 import SecurityContextStorage from 'model/storage/SecurityContextStorage';
 
 const rollDicesActionContainerClass = 'roll-dices-action-container';
@@ -43,6 +45,29 @@ export default class CurrentMovePlayerChangeEventHandler
       if (userInfo.id === userId) {
         showRollDicesButtons();
       }
+
+      const { gamePageData } = GameStateStorage;
+
+      if (gamePageData === null) {
+        return;
+      }
+
+      const foundPlayer = gamePageData.players.find(
+        (player) => player.id === payloadDto.payload.userId
+      );
+
+      if (foundPlayer === undefined) {
+        return;
+      }
+
+      const nicknameSpanElement = document.createElement('span');
+      nicknameSpanElement.classList.add('nickname-in-log-text');
+      nicknameSpanElement.style.color = foundPlayer.color;
+      nicknameSpanElement.textContent = foundPlayer.nickname;
+
+      const spanElement = document.createElement('span');
+      spanElement.innerHTML = `Ход переходит к игроку ${nicknameSpanElement.outerHTML}`;
+      GameLogComponent.addMessageToLog(spanElement);
     }, 500);
   }
 }
