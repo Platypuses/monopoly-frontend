@@ -3,6 +3,7 @@
 import WebSocketEventEnum from 'model/dto/responses/ws/WebSocketEventEnum';
 import WebSocketPayloadDto from 'model/dto/responses/ws/WebSocketPayloadDto';
 import EventHandler from 'model/event-handlers/EventHandler';
+import GameStartEventHandler from 'model/event-handlers/GameStartEventHandler';
 import LobbyDissolveEventHandler from 'model/event-handlers/LobbyDissolveEventHandler';
 import LobbyJoinEventHandler from 'model/event-handlers/LobbyJoinEventHandler';
 import LobbyLeaveEventHandler from 'model/event-handlers/LobbyLeaveEventHandler';
@@ -20,6 +21,10 @@ eventHandlers.set(WebSocketEventEnum.LOBBY_LEAVE, new LobbyLeaveEventHandler());
 eventHandlers.set(
   WebSocketEventEnum.LOBBY_DISSOLVE,
   new LobbyDissolveEventHandler()
+);
+eventHandlers.set(
+  WebSocketEventEnum.START_OF_THE_GAME,
+  new GameStartEventHandler()
 );
 
 function onCloseCallback() {

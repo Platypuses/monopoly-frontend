@@ -59,7 +59,7 @@ export default class LobbyPagePresenter implements Presenter {
       );
 
     this.pageComponent.startGameButtonElement.onclick = async () =>
-      LobbyPagePresenter.handleStartGameButtonClick(this.pageComponent).catch(
+      LobbyPagePresenter.handleStartGameButtonClick().catch(
         ErrorHandler.handleError
       );
 
@@ -74,16 +74,8 @@ export default class LobbyPagePresenter implements Presenter {
     alert('ID лобби успешно скопировано');
   }
 
-  private static async handleStartGameButtonClick(
-    pageComponent: LobbyPageComponent
-  ) {
-    const gameState = await GameApi.startGame();
-
-    ModalWindowComponent.closeWindow(pageComponent.modalWindow);
-    setTimeout(
-      () => Router.goToRoute(RoutesEnum.GAME, [gameState.gameId.toString()]),
-      300
-    );
+  private static async handleStartGameButtonClick() {
+    await GameApi.startGame();
   }
 
   private static async handleExitLobbyButtonClick(
