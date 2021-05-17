@@ -245,7 +245,7 @@ export default {
           imageSrc: americanAirlinesPropertyCellSrc,
           price: 220,
           rent: 18,
-          ownerColor: <string | null>cellsOwnerColorsMap.get(21),
+          ownerColor: <string | null>cellsOwnerColorsMap.get(22),
           name: 'AMERICAN AIRLINES',
         },
         n23: {
