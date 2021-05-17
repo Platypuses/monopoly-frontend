@@ -1,0 +1,324 @@
+.game-page-container {
+  $background-color: #efede0;
+
+  align-items: center;
+  background-color: $background-color;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.players-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 700px;
+  justify-content: space-between;
+  margin-left: 20px;
+  width: 500px;
+}
+
+.player-info {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 80px;
+  justify-content: center;
+  width: 100%;
+}
+
+.player-color-rectangle {
+  $border-color: #000;
+  border: 1px solid $border-color;
+  height: 30px;
+  margin-right: 20px;
+  width: 30px;
+}
+
+.nickname-balance-container {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.player-nickname-text {
+  font-size: 30px;
+}
+
+.player-balance-text {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.game-field-container {
+  height: 750px;
+  margin: 20px;
+  width: 750px;
+}
+
+.cell {
+  $background-color: #fff;
+  $border-color: #000;
+
+  background-color: $background-color;
+  border: 1px solid $border-color;
+  position: relative;
+}
+
+.corner-cell {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 110px;
+  justify-content: center;
+  width: 110px;
+}
+
+.empty-corner-cell {
+  $background-color: #fffff5;
+  background-color: $background-color;
+}
+
+.not-corner-cell {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.top-bottom-field-edge {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.left-right-field-edge {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  height: 530px;
+  justify-content: space-between;
+  margin-bottom: 1px;
+  margin-top: 1px;
+  width: 100%;
+}
+
+.left-right-field-edge-row {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.top-bottom-edge-not-corner-cell {
+  height: 110px;
+  width: 55px;
+}
+
+.left-right-edge-not-corner-cell {
+  height: 55px;
+  width: 110px;
+}
+
+.top-edge-cell-price {
+  $border-width: 1px;
+  $border-style: solid;
+  $border-color: #000;
+
+  border-left: $border-width $border-style $border-color;
+  border-right: $border-width $border-style $border-color;
+  border-top: $border-width $border-style $border-color;
+  padding: 1px;
+  position: absolute;
+  text-align: center;
+  top: -25px;
+  width: 53px;
+}
+
+.right-edge-cell-price {
+  $border-width: 1px;
+  $border-style: solid;
+  $border-color: #000;
+
+  border-left: $border-width $border-style $border-color;
+  border-right: $border-width $border-style $border-color;
+  border-top: $border-width $border-style $border-color;
+  padding-bottom: 1px;
+  position: absolute;
+  right: -41px;
+  text-align: center;
+  top: 16px;
+  transform: rotate(90deg);
+  width: 55px;
+}
+
+.bottom-edge-cell-price {
+  $border-width: 1px;
+  $border-style: solid;
+  $border-color: #000;
+
+  border-bottom: $border-width $border-style $border-color;
+  border-left: $border-width $border-style $border-color;
+  border-right: $border-width $border-style $border-color;
+  bottom: -25px;
+  padding: 1px;
+  position: absolute;
+  text-align: center;
+  width: 53px;
+}
+
+.left-edge-cell-price {
+  $border-width: 1px;
+  $border-style: solid;
+  $border-color: #000;
+
+  border-left: $border-width $border-style $border-color;
+  border-right: $border-width $border-style $border-color;
+  border-top: $border-width $border-style $border-color;
+  left: -41px;
+  padding-bottom: 1px;
+  position: absolute;
+  text-align: center;
+  top: 16px;
+  transform: rotate(-90deg);
+  width: 55px;
+}
+
+.price-text {
+  font-weight: bold;
+}
+
+.game-log-container {
+  $background-color: #fff;
+  $border-color: #000;
+
+  align-items: center;
+  background-color: $background-color;
+  border: 2px solid $border-color;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  justify-content: center;
+  margin-left: 60px;
+  margin-right: 60px;
+  overflow-y: scroll;
+  width: 400px;
+}
+
+.game-log-content {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  height: 97%;
+  justify-content: flex-start;
+  width: 90%;
+}
+
+.log-message {
+  margin-bottom: 10px;
+}
+
+.nickname-in-log-text {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.game-actions-buttons-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  justify-content: center;
+  left: 50%;
+  position: fixed;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 450px;
+}
+
+.roll-dices-action-container,
+.property-purchase-action-container {
+  $border-color: #000;
+
+  align-items: center;
+  border: 1px solid $border-color;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.roll-dices-action-container {
+  //display: none;
+  height: 90px;
+  padding: 20px;
+}
+
+.property-purchase-action-container {
+  //display: none;
+  height: 100px;
+  padding: 10px;
+}
+
+.your-turn-text {
+  font-size: 30px;
+}
+
+.roll-dices-button {
+  $left-right-padding: 20px;
+  $bottom-padding: 2px;
+
+  font-size: 20px;
+  padding: 0 $left-right-padding $bottom-padding;
+}
+
+.wanna-buy-property-text {
+  font-size: 20px;
+  text-align: center;
+  width: 350px;
+}
+
+.purchase-buttons-container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 200px;
+}
+
+.accept-purchase-button,
+.decline-purchase-button {
+  font-size: 20px;
+}
+
+.accept-purchase-button {
+  $left-right-padding: 25px;
+  $bottom-padding: 2px;
+
+  padding: 0 $left-right-padding $bottom-padding;
+}
+
+.decline-purchase-button {
+  $left-right-padding: 20px;
+  $bottom-padding: 2px;
+
+  padding: 0 $left-right-padding $bottom-padding;
+}
+
+.player-icon-circle {
+  $border-color: #000;
+  border: 1px solid $border-color;
+  border-radius: 100%;
+  height: 25px;
+  position: fixed;
+  transition-duration: 3s;
+  transition-property: all;
+  transition-timing-function: ease-in-out;
+  width: 25px;
+}

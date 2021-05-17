@@ -1,5 +1,6 @@
 import ModalWindowComponent from 'components/library/modal-window/ModalWindowComponent';
 import LobbyPageComponent from 'components/pages/lobby-page/LobbyPageComponent';
+import GameApi from 'model/api/GameApi';
 import LobbyApi from 'model/api/LobbyApi';
 import ErrorHandler from 'model/error/ErrorHandler';
 import UnauthorizedError from 'model/error/UnauthorizedError';
@@ -57,6 +58,11 @@ export default class LobbyPagePresenter implements Presenter {
         ErrorHandler.handleError
       );
 
+    this.pageComponent.startGameButtonElement.onclick = async () =>
+      LobbyPagePresenter.handleStartGameButtonClick(this.pageComponent).catch(
+        ErrorHandler.handleError
+      );
+
     this.pageComponent.exitLobbyButtonElement.onclick = async () =>
       LobbyPagePresenter.handleExitLobbyButtonClick(this.pageComponent).catch(
         ErrorHandler.handleError
@@ -66,6 +72,18 @@ export default class LobbyPagePresenter implements Presenter {
   private static async handleCopyLobbyIdButtonClick(lobbyId: number) {
     await navigator.clipboard.writeText(lobbyId.toString());
     alert('ID лобби успешно скопировано');
+  }
+
+  private static async handleStartGameButtonClick(
+    pageComponent: LobbyPageComponent
+  ) {
+    const gameState = await GameApi.startGame();
+
+    ModalWindowComponent.closeWindow(pageComponent.modalWindow);
+    setTimeout(
+      () => Router.goToRoute(RoutesEnum.GAME, [gameState.gameId.toString()]),
+      300
+    );
   }
 
   private static async handleExitLobbyButtonClick(

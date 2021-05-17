@@ -1,4 +1,5 @@
 import ErrorHandler from 'model/error/ErrorHandler';
+import GamePagePresenter from 'presenters/GamePagePresenter';
 import JoinLobbyPagePresenter from 'presenters/JoinLobbyPagePresenter';
 import LobbyPagePresenter from 'presenters/LobbyPagePresenter';
 import LoginPagePresenter from 'presenters/LoginPagePresenter';
@@ -18,6 +19,7 @@ const joinLobbyPagePresenter = new JoinLobbyPagePresenter(
   mainMenuPagePresenter
 );
 const lobbyPagePresenter = new LobbyPagePresenter(mainMenuPagePresenter);
+const gamePagePresenter = new GamePagePresenter();
 
 const pagesDictionary = new Map<string, Presenter>();
 pagesDictionary.set(RoutesEnum.MAIN, mainPagePresenter);
@@ -26,6 +28,7 @@ pagesDictionary.set(RoutesEnum.REGISTRATION, registrationPagePresenter);
 pagesDictionary.set(RoutesEnum.MAIN_MENU, mainMenuPagePresenter);
 pagesDictionary.set(RoutesEnum.JOIN_LOBBY, joinLobbyPagePresenter);
 pagesDictionary.set(RoutesEnum.LOBBY, lobbyPagePresenter);
+pagesDictionary.set(RoutesEnum.GAME, gamePagePresenter);
 
 const DEFAULT_ROUTE = RoutesEnum.MAIN;
 
